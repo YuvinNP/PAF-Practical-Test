@@ -11,7 +11,12 @@
 
 <title>Patient Service</title>
 
+<!-- CSS -->
 <link rel="stylesheet" href="Views/bootstrap.min.css">
+
+<!-- JS -->
+<script src="Components/jquery-3.2.1.min.js"></script>
+<script src="Components/Patient.js" type="text/javascript"></script>
 
 </head>
 
@@ -41,7 +46,7 @@
 	
 	<label>Gender<label_1>*</label_1></label><br/>
 		<select name="gender" id="gender" class="form-control form-control-sm">
-			<option selected="" value="default">Select Gender</option>
+			<option value="0">Select Gender</option>
 			<option value="M">Male</option>
 			<option value="F">Female</option>
 		</select><br/>	
@@ -54,7 +59,7 @@
 	
 	<label>Blood Group<label_1>*</label_1></label><br/>
 		<select name="bloodGroup" id="bloodGroup" class="form-control form-control-sm">
-			<option selected="" value="default">Select Blood Group</option>
+			<option value="0">Select Blood Group</option>
 			<option value="A+">A+</option>
 			<option value="A-">A-</option>
 			<option value="B+">B+</option>
@@ -75,7 +80,7 @@
 	<h2>Login Information</h2>
 
 	<label>Password<label_1>*</label_1></label><br/> 
-		<input type="password" placeholder="Enter Password" name="password" id="password" title="Password must contain at least 6 characters,including UPPER/lowercase and numbers" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" class="form-control form-control-sm"><br/> 
+		<input type="password" placeholder="Enter Password" name="password" id="password" class="form-control form-control-sm"><br/> 
 		
 	<label>Confirm Password<label_1>*</label_1></label><br/>
 		<input type="password" placeholder="confirm Password" name="cPassword" id="cPassword" class="form-control form-control-sm"><br/>

@@ -237,7 +237,7 @@ public class PatientServiceImpl implements IPatientService {
 			output = "<table border= '1'>" +
 					 "<tr><th>Patient Id</th>" + "<th>First Name</th>" + "<th>Last Name</th>" +
 					 "<th>Gender</th>" + "<th>NIC</th>" + "<th>DOB</th>" + "<th>Email</th>" +
-					 "<th>Phone</th>" + "<th>Blood Group</th>" + "<th>Update</th>" + "<th>Remove</th></tr>";
+					 "<th>Phone</th>" + "<th>Blood Group</th>" + "<th>Password</th>" + "<th>Update</th>" + "<th>Remove</th></tr>";
 
 			while (rs.next()) {
 
@@ -298,7 +298,7 @@ public class PatientServiceImpl implements IPatientService {
 
 	}
 
-/*	// to update patient details
+	// to update patient details
 	@Override
 	public String updatePatientDetails(Patient patient) {
 
@@ -321,18 +321,18 @@ public class PatientServiceImpl implements IPatientService {
 			preparedStmt.setString(Constants.COLUMN_INDEX_FIVE, patient.getDOB());
 			preparedStmt.setString(Constants.COLUMN_INDEX_SIX, patient.getPhone());
 			preparedStmt.setString(Constants.COLUMN_INDEX_SEVEN, patient.getBloodGroup());
-			preparedStmt.setString(Constants.COLUMN_INDEX_EIGHT, patient.getAllergy());
-			preparedStmt.setString(Constants.COLUMN_INDEX_NINE, patient.getPassword());
-			preparedStmt.setString(Constants.COLUMN_INDEX_TEN, patient.getConfirmPassword());
-			preparedStmt.setString(Constants.COLUMN_INDEX_ELEVEN, patient.getPatientId());
+			preparedStmt.setString(Constants.COLUMN_INDEX_EIGHT, patient.getPassword());
+			preparedStmt.setString(Constants.COLUMN_INDEX_NINE, patient.getConfirmPassword());
+			preparedStmt.setString(Constants.COLUMN_INDEX_TEN, patient.getPatientId());
 			
 			preparedStmt.execute();
-
-			output = "Patient details updated successfully..!";
+			
+			String newPatient = getAllPatients();
+			 output = "{\"status\":\"success\", \"data\": \"" + newPatient + "\"}"; 
 			
 		} catch (Exception e) {
 
-			output = "Error while updating the patient details..!";
+			output = "{\"status\":\"error\", \"data\":\"Error while updating the patient details..!\"}"; 
 			log.log(Level.SEVERE, e.getMessage());
 
 		} finally {
@@ -372,11 +372,12 @@ public class PatientServiceImpl implements IPatientService {
 
 			preparedStmt.execute();
 
-			output = "Delete account successfully..!";
+			String newPatient = getAllPatients();
+			output = "{\"status\":\"success\", \"data\": \"" + newPatient + "\"}"; 
 
 		} catch (Exception e) {
 
-			output = "Error while deleting the patient account..!";
+			output = "{\"status\":\"error\", \"data\":\"Error while deleting the patient account..!\"}"; 
 			log.log(Level.SEVERE, e.getMessage());
 
 		} finally {
@@ -397,7 +398,7 @@ public class PatientServiceImpl implements IPatientService {
 
 		return output;
 	}
-*/
+
 	
 
 }
