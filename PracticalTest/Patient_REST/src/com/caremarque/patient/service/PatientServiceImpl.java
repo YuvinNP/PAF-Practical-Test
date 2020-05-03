@@ -354,7 +354,7 @@ public class PatientServiceImpl implements IPatientService {
 		return output;
 	}
 	
-/*	// to delete a patient from the system
+	// to delete a patient from the system
 	@Override
 	public String deletePatient(String patientId) {
 
@@ -372,11 +372,12 @@ public class PatientServiceImpl implements IPatientService {
 
 			preparedStmt.execute();
 
-			output = "Delete account successfully..!";
+			String newPatient = getAllPatients();
+			output = "{\"status\":\"success\", \"data\": \"" + newPatient + "\"}"; 
 
 		} catch (Exception e) {
 
-			output = "Error while deleting the patient account..!";
+			output = "{\"status\":\"error\", \"data\":\"Error while deleting the patient account..!\"}"; 
 			log.log(Level.SEVERE, e.getMessage());
 
 		} finally {
@@ -398,6 +399,6 @@ public class PatientServiceImpl implements IPatientService {
 		return output;
 	}
 
-	*/
+	
 
 }
