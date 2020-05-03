@@ -104,7 +104,10 @@ public class PaymentServiceImpl implements IPaymentService {
 				preparedstatement.setString(Constants.COLUMN_INDEX_FOURTEEN, p.getPaymentStatus());
 				preparedstatement.execute();
 
-				output = "Data inserted successfully!";
+//				output = "Data inserted successfully!";
+				String newItems = getPayments();
+				output = "{\"status\":\"success\", \"data\": \"" + newItems + "\"}";
+				
 			} else {
 				output = "Authentication ERROR!!!";
 				System.out.println("Authentication ERROR!!!");
@@ -113,7 +116,9 @@ public class PaymentServiceImpl implements IPaymentService {
 		} catch (Exception e) {
 
 			log.log(Level.SEVERE, e.getMessage());
-			output = "Error while inserting data to payments table";
+//			output = "Error while inserting data to payments table";
+			output = "{\"status\":\"error\", \"data\": \"Error while inserting the item.\"}";
+			System.err.println(e.getMessage());
 
 		} finally {
 
@@ -227,20 +232,20 @@ public class PaymentServiceImpl implements IPaymentService {
 
 			output = "<table class=\" table table-sm table-responsive\" style=\"font-family: 'Roboto', sans-serif\" > " 
 					+ "<tr>"
-					+ "<th scope=\"col\">PaymentId</th> "
-					+ "<th scope=\"col\">PatientId</th> "
-					+ "<th scope=\"col\">PatientName</th> "
-					+ "<th scope=\"col\">AppointmentId</th> "
-					+ "<th scope=\"col\">DoctorId</th> "
-					+ "<th scope=\"col\">HospitalId</th> "
-					+ "<th scope=\"col\">PaymentDate</th> "
-					+ "<th scope=\"col\">PaymentTime</th> "
-					+ "<th scope=\"col\">DoctorCharges</th> "
-					+ "<th scope=\"col\">HospitalCharges</th> "
-					+ "<th scope=\"col\">TotalAmount</th> "
+					+ "<th scope=\"col\">Payment Id</th> "
+					+ "<th scope=\"col\">Patient Id</th> "
+					+ "<th scope=\"col\">Patient Name</th> "
+					+ "<th scope=\"col\">Appointment Id</th> "
+					+ "<th scope=\"col\">Doctor Id</th> "
+					+ "<th scope=\"col\">Hospital Id</th> "
+					+ "<th scope=\"col\">Paymen tDate</th> "
+					+ "<th scope=\"col\">Payment Time</th> "
+					+ "<th scope=\"col\">Doctor Charges</th> "
+					+ "<th scope=\"col\">Hospital Charges</th> "
+					+ "<th scope=\"col\">Total Amount</th> "
 					+ "<th scope=\"col\">Telephone No</th> "
 					+ "<th scope=\"col\">Email</th> "
-					+ "<th scope=\"col\">PaymentStatus</th>"
+					+ "<th scope=\"col\">Payment Status</th>"
 					+"<th scope=\"col\">Update</th>"
 					+"<th scope=\"col\">Delete</th>"
 					+ "</tr>";
@@ -263,7 +268,7 @@ public class PaymentServiceImpl implements IPaymentService {
 				payment.setPaymentStatus(resultset.getString(Constants.COLUMN_INDEX_FOURTEEN));
 				arrayList.add(payment);
 
-				output += "<tr><td>" + resultset.getString(Constants.COLUMN_INDEX_ONE) + "</td>";
+				output += "<tr><td style=\"color:#008AD9;font-weight: bold;\">" + resultset.getString(Constants.COLUMN_INDEX_ONE) + "</td>";
 				output += "<td>" + resultset.getString(Constants.COLUMN_INDEX_TWO) + "</td>";
 				output += "<td>" + resultset.getString(Constants.COLUMN_INDEX_THREE) + "</td>";
 				output += "<td>" + resultset.getString(Constants.COLUMN_INDEX_FOUR) + "</td>";
@@ -330,20 +335,20 @@ public class PaymentServiceImpl implements IPaymentService {
 
 			output = "<table class=\" table table-sm table-responsive\" style=\"font-family: 'Roboto', sans-serif\" > " 
 					+ "<tr>"
-					+ "<th scope=\"col\">PaymentId</th> "
-					+ "<th scope=\"col\">PatientId</th> "
-					+ "<th scope=\"col\">PatientName</th> "
-					+ "<th scope=\"col\">AppointmentId</th> "
-					+ "<th scope=\"col\">DoctorId</th> "
-					+ "<th scope=\"col\">HospitalId</th> "
-					+ "<th scope=\"col\">PaymentDate</th> "
-					+ "<th scope=\"col\">PaymentTime</th> "
-					+ "<th scope=\"col\">DoctorCharges</th> "
-					+ "<th scope=\"col\">HospitalCharges</th> "
-					+ "<th scope=\"col\">TotalAmount</th> "
+					+ "<th scope=\"col\">Payment Id</th> "
+					+ "<th scope=\"col\">Patient Id</th> "
+					+ "<th scope=\"col\">Patient Name</th> "
+					+ "<th scope=\"col\">Appointment Id</th> "
+					+ "<th scope=\"col\">Doctor Id</th> "
+					+ "<th scope=\"col\">Hospital Id</th> "
+					+ "<th scope=\"col\">Payment Date</th> "
+					+ "<th scope=\"col\">Payment Time</th> "
+					+ "<th scope=\"col\">Doctor Charges</th> "
+					+ "<th scope=\"col\">Hospital Charges</th> "
+					+ "<th scope=\"col\">Total Amount</th> "
 					+ "<th scope=\"col\">Telephone No</th> "
 					+ "<th scope=\"col\">Email</th> "
-					+ "<th scope=\"col\">PaymentStatus</th>"
+					+ "<th scope=\"col\">Payment Status</th>"
 					+ "</tr>";
 
 			while (resultset.next()) {
@@ -364,7 +369,7 @@ public class PaymentServiceImpl implements IPaymentService {
 				payment.setPaymentStatus(resultset.getString(Constants.COLUMN_INDEX_FOURTEEN));
 				arrayList.add(payment);
 
-				output += "<tr><td>" + resultset.getString(Constants.COLUMN_INDEX_ONE) + "</td>";
+				output += "<tr><td style=\"color:#008AD9;font-weight: bold;\">" + resultset.getString(Constants.COLUMN_INDEX_ONE) + "</td>";
 				output += "<td>" + resultset.getString(Constants.COLUMN_INDEX_TWO) + "</td>";
 				output += "<td>" + resultset.getString(Constants.COLUMN_INDEX_THREE) + "</td>";
 				output += "<td>" + resultset.getString(Constants.COLUMN_INDEX_FOUR) + "</td>";
