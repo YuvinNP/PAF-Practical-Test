@@ -108,7 +108,7 @@ import com.google.gson.JsonParser;
 				
 				
 				
-				//updateDoctor method
+				//updateDoctor method.
 				@PUT
 				@Path("/update")
 				@Consumes(MediaType.APPLICATION_JSON)
