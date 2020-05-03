@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.caremarque.payment.model.Payment;
+
 /**
  * Servlet implementation class PaymentAPI
  */
@@ -35,6 +37,10 @@ public class PaymentAPI extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+		Payment payment = new Payment();
+		payment.setPatientId(patientId);
+		payment.setPatientName(patientName);
+		payment.set
 	}
 
 	/**

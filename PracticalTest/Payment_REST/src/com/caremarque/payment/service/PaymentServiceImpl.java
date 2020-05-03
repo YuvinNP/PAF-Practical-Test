@@ -107,7 +107,7 @@ public class PaymentServiceImpl implements IPaymentService {
 //				output = "Data inserted successfully!";
 				String newItems = getPayments();
 				output = "{\"status\":\"success\", \"data\": \"" + newItems + "\"}";
-				
+
 			} else {
 				output = "Authentication ERROR!!!";
 				System.out.println("Authentication ERROR!!!");
@@ -230,25 +230,15 @@ public class PaymentServiceImpl implements IPaymentService {
 
 			DateFormat inputFormatter = new SimpleDateFormat("dd/MM/yyyy");
 
-			output = "<table class=\" table table-sm table-responsive\" style=\"font-family: 'Roboto', sans-serif\" > " 
-					+ "<tr>"
-					+ "<th scope=\"col\">Payment Id</th> "
-					+ "<th scope=\"col\">Patient Id</th> "
-					+ "<th scope=\"col\">Patient Name</th> "
-					+ "<th scope=\"col\">Appointment Id</th> "
-					+ "<th scope=\"col\">Doctor Id</th> "
-					+ "<th scope=\"col\">Hospital Id</th> "
-					+ "<th scope=\"col\">Paymen tDate</th> "
-					+ "<th scope=\"col\">Payment Time</th> "
-					+ "<th scope=\"col\">Doctor Charges</th> "
-					+ "<th scope=\"col\">Hospital Charges</th> "
-					+ "<th scope=\"col\">Total Amount</th> "
-					+ "<th scope=\"col\">Telephone No</th> "
-					+ "<th scope=\"col\">Email</th> "
-					+ "<th scope=\"col\">Payment Status</th>"
-					+"<th scope=\"col\">Update</th>"
-					+"<th scope=\"col\">Delete</th>"
-					+ "</tr>";
+			output = "<table class=\" table table-sm table-responsive\" style=\"font-family: 'Roboto', sans-serif\" > "
+					+ "<tr>" + "<th scope=\"col\">Payment Id</th> " + "<th scope=\"col\">Patient Id</th> "
+					+ "<th scope=\"col\">Patient Name</th> " + "<th scope=\"col\">Appointment Id</th> "
+					+ "<th scope=\"col\">Doctor Id</th> " + "<th scope=\"col\">Hospital Id</th> "
+					+ "<th scope=\"col\">Paymen tDate</th> " + "<th scope=\"col\">Payment Time</th> "
+					+ "<th scope=\"col\">Doctor Charges</th> " + "<th scope=\"col\">Hospital Charges</th> "
+					+ "<th scope=\"col\">Total Amount</th> " + "<th scope=\"col\">Telephone No</th> "
+					+ "<th scope=\"col\">Email</th> " + "<th scope=\"col\">Payment Status</th>"
+					+ "<th scope=\"col\">Update</th>" + "<th scope=\"col\">Delete</th>" + "</tr>";
 
 			while (resultset.next()) {
 				Payment payment = new Payment();
@@ -268,7 +258,8 @@ public class PaymentServiceImpl implements IPaymentService {
 				payment.setPaymentStatus(resultset.getString(Constants.COLUMN_INDEX_FOURTEEN));
 				arrayList.add(payment);
 
-				output += "<tr><td style=\"color:#008AD9;font-weight: bold;\">" + resultset.getString(Constants.COLUMN_INDEX_ONE) + "</td>";
+				output += "<tr><td style=\"color:#008AD9;font-weight: bold;\">"
+						+ resultset.getString(Constants.COLUMN_INDEX_ONE) + "</td>";
 				output += "<td>" + resultset.getString(Constants.COLUMN_INDEX_TWO) + "</td>";
 				output += "<td>" + resultset.getString(Constants.COLUMN_INDEX_THREE) + "</td>";
 				output += "<td>" + resultset.getString(Constants.COLUMN_INDEX_FOUR) + "</td>";
@@ -283,14 +274,22 @@ public class PaymentServiceImpl implements IPaymentService {
 				output += "<td>" + resultset.getString(Constants.COLUMN_INDEX_THIRTEEN) + "</td>";
 				output += "<td>" + resultset.getString(Constants.COLUMN_INDEX_FOURTEEN) + "</td>";
 
+//				output += "<td>"
+//						+ "<input name=\"btnUpdate\" type=\"button\" value=\"Update\" class=\" btnUpdate btn btn-secondary\" style= \"font-size: 14px;\">"
+//						+ "</td>"
+//						+ "<td>"
+//						+ "<form method=\"post\" action=\"payments.jsp\">"
+//						+ "<input name=\"btnRemove\" type=\"submit\"  value=\"Remove\" class=\"btn btn-danger\" style= \"font-size: 14px;\">"
+//						+ "<input name=\"hidItemIDDelete\" type=\"hidden\" value=\"" + resultset.getString(Constants.COLUMN_INDEX_ONE) + "\">"
+//						+ "</form>"
+//						+ "</td>"
+//						+ "</tr>";
 				output += "<td>"
-						+ "<input name=\"btnUpdate\" type=\"button\" value=\"Update\" class=\" btnUpdate btn btn-secondary\" style= \"font-size: 14px;\">"
+						+ "<input name='btnUpdate' type='button' value='Update' class='btnUpdate btn btn-secondary' style= \"font-size: 14px;\">"
 						+ "</td>"
 						+ "<td>"
-						+ "<form method=\"post\" action=\"payments.jsp\">"
-						+ "<input name=\"btnRemove\" type=\"submit\"  value=\"Remove\" class=\"btn btn-danger\" style= \"font-size: 14px;\">"
-						+ "<input name=\"hidItemIDDelete\" type=\"hidden\" value=\"" + resultset.getString(Constants.COLUMN_INDEX_ONE) + "\">"
-						+ "</form>"
+						+ "<input name='btnRemove' type='button' value='Remove' class='btnRemove btn btn-danger' style= \"font-size: 14px;\" data-paymentid='"
+						+ resultset.getString(Constants.COLUMN_INDEX_ONE) + "'>" 
 						+ "</td>"
 						+ "</tr>";
 				System.err.println("Data Retreived From DB");
@@ -316,7 +315,7 @@ public class PaymentServiceImpl implements IPaymentService {
 
 		return output;
 	}
-	
+
 	public String getCanceledPayments() {
 
 		ArrayList<Payment> arrayList = new ArrayList<Payment>();
@@ -333,23 +332,14 @@ public class PaymentServiceImpl implements IPaymentService {
 
 			DateFormat inputFormatter = new SimpleDateFormat("dd/MM/yyyy");
 
-			output = "<table class=\" table table-sm table-responsive\" style=\"font-family: 'Roboto', sans-serif\" > " 
-					+ "<tr>"
-					+ "<th scope=\"col\">Payment Id</th> "
-					+ "<th scope=\"col\">Patient Id</th> "
-					+ "<th scope=\"col\">Patient Name</th> "
-					+ "<th scope=\"col\">Appointment Id</th> "
-					+ "<th scope=\"col\">Doctor Id</th> "
-					+ "<th scope=\"col\">Hospital Id</th> "
-					+ "<th scope=\"col\">Payment Date</th> "
-					+ "<th scope=\"col\">Payment Time</th> "
-					+ "<th scope=\"col\">Doctor Charges</th> "
-					+ "<th scope=\"col\">Hospital Charges</th> "
-					+ "<th scope=\"col\">Total Amount</th> "
-					+ "<th scope=\"col\">Telephone No</th> "
-					+ "<th scope=\"col\">Email</th> "
-					+ "<th scope=\"col\">Payment Status</th>"
-					+ "</tr>";
+			output = "<table class=\" table table-sm table-responsive\" style=\"font-family: 'Roboto', sans-serif\" > "
+					+ "<tr>" + "<th scope=\"col\">Payment Id</th> " + "<th scope=\"col\">Patient Id</th> "
+					+ "<th scope=\"col\">Patient Name</th> " + "<th scope=\"col\">Appointment Id</th> "
+					+ "<th scope=\"col\">Doctor Id</th> " + "<th scope=\"col\">Hospital Id</th> "
+					+ "<th scope=\"col\">Payment Date</th> " + "<th scope=\"col\">Payment Time</th> "
+					+ "<th scope=\"col\">Doctor Charges</th> " + "<th scope=\"col\">Hospital Charges</th> "
+					+ "<th scope=\"col\">Total Amount</th> " + "<th scope=\"col\">Telephone No</th> "
+					+ "<th scope=\"col\">Email</th> " + "<th scope=\"col\">Payment Status</th>" + "</tr>";
 
 			while (resultset.next()) {
 				Payment payment = new Payment();
@@ -369,7 +359,8 @@ public class PaymentServiceImpl implements IPaymentService {
 				payment.setPaymentStatus(resultset.getString(Constants.COLUMN_INDEX_FOURTEEN));
 				arrayList.add(payment);
 
-				output += "<tr><td style=\"color:#008AD9;font-weight: bold;\">" + resultset.getString(Constants.COLUMN_INDEX_ONE) + "</td>";
+				output += "<tr><td style=\"color:#008AD9;font-weight: bold;\">"
+						+ resultset.getString(Constants.COLUMN_INDEX_ONE) + "</td>";
 				output += "<td>" + resultset.getString(Constants.COLUMN_INDEX_TWO) + "</td>";
 				output += "<td>" + resultset.getString(Constants.COLUMN_INDEX_THREE) + "</td>";
 				output += "<td>" + resultset.getString(Constants.COLUMN_INDEX_FOUR) + "</td>";
@@ -384,7 +375,6 @@ public class PaymentServiceImpl implements IPaymentService {
 				output += "<td>" + resultset.getString(Constants.COLUMN_INDEX_THIRTEEN) + "</td>";
 				output += "<td>" + resultset.getString(Constants.COLUMN_INDEX_FOURTEEN) + "</td>";
 
-				
 				System.err.println("Data Retreived From DB");
 			}
 

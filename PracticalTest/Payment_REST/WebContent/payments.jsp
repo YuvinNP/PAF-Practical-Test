@@ -25,42 +25,42 @@
 					style="padding: 10px; background-color: #008AD9; font-weight: bold;">
 					<label style="color: white">CREATE PAYMENTS</label>
 				</div>
-				<form action="" style="padding: 10px;">
+				<form id="formItem" name="formItem" style="padding: 10px;">
 					<div class="form-row">
 						<div class="form-group col-md-3">
 							<label for="inputState">Appointment ID:</label> <select
 								id="appointmentId" name="appointmentId" class="form-control">
-								<option selected>Choose...</option>
-								<option>APP001</option>
-								<option>APP002</option>
-								<option>APP003</option>
+								<option value="" selected>Choose...</option>
+								<option value="APP001">APP001</option>
+								<option value="APP002">APP002</option>
+								<option value="APP003">APP003</option>
 							</select>
 						</div>
 						<div class="form-group col-md-3">
 							<label for="inputState">Patient ID:</label> <select
 								id="patientId" name="patientId" class="form-control">
-								<option selected>Choose...</option>
-								<option>P101</option>
-								<option>P102</option>
-								<option>P103</option>
+								<option value="" selected>Choose...</option>
+								<option value="P101">P101</option>
+								<option value="P102">P102</option>
+								<option value="P103">P103</option>
 							</select>
 						</div>
 						<div class="form-group col-md-3">
 							<label for="inputState">Doctor ID:</label> <select id="doctorId"
 								name="doctorId" class="form-control">
-								<option selected>Choose...</option>
-								<option>D202</option>
-								<option>D203</option>
-								<option>D204</option>
+								<option value="" selected>Choose...</option>
+								<option value="D202">D202</option>
+								<option value="D203">D203</option>
+								<option value="D204">D204</option>
 							</select>
 						</div>
 						<div class="form-group col-md-3">
 							<label for="inputState">Hospital ID:</label> <select id="hospitalId"
 								name="hospitalId" class="form-control">
-								<option selected>Choose...</option>
-								<option>H202</option>
-								<option>H203</option>
-								<option>H204</option>
+								<option value="" selected>Choose...</option>
+								<option value="H202">H202</option>
+								<option value="H203">H203</option>
+								<option value="H204">H204</option>
 							</select>
 						</div>
 					</div>
@@ -89,15 +89,15 @@
 						<div class="form-group col-md-4">
 							<label for="inputCity">Hospital Charges:</label> <input
 								type="text" class="form-control" id="hospitalCharges" name="hospitalCharges"
-								placeholder="0.00" readonly>
+								placeholder="0.00" value="1000.00" readonly>
 						</div>
 						<div class="form-group col-md-4">
 							<label for="inputCity">Doctor Charges:</label> <input type="text"
-								class="form-control" id="doctorCharges" name="doctorCharges" placeholder="0.00" readonly>
+								class="form-control" id="doctorCharges" name="doctorCharges" value="1000.00" placeholder="0.00" readonly>
 						</div>
 						<div class="form-group col-md-4">
 							<label for="inputCity">Total Amount:</label> <input type="text"
-								class="form-control" id="totalAmount" name="totalAmount" placeholder="0.00" readonly>
+								class="form-control" id="totalAmount" name="totalAmount" value="2000.00" placeholder="0.00" readonly>
 						</div>
 					</div>
 					<div class="form-row">
