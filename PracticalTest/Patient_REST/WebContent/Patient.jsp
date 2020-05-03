@@ -75,7 +75,7 @@
 	<h2>Login Information</h2>
 
 	<label>Password<label_1>*</label_1></label><br/> 
-		<input type="password" placeholder="Enter Password" name="password" id="password" title="Password must contain at least 6 characters,including UPPER/lowercase and numbers" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" class="form-control form-control-sm"><br/> 
+		<input type="password" placeholder="Enter Password" name="password" id="password" class="form-control form-control-sm"><br/> 
 		
 	<label>Confirm Password<label_1>*</label_1></label><br/>
 		<input type="password" placeholder="confirm Password" name="cPassword" id="cPassword" class="form-control form-control-sm"><br/>
