@@ -37,10 +37,9 @@ public class PatientAPI extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Patient patient = new Patient();
+		System.out.println("Patient Api post method");
 		
-		System.out.println("Patiemt Api");
-		doGet(request, response);
+		Patient patient = new Patient();
 		
 		patient.setFirstName(request.getParameter("firstName"));
 		patient.setLastName(request.getParameter("lastName"));
@@ -51,32 +50,35 @@ public class PatientAPI extends HttpServlet {
 		patient.setPhone(request.getParameter("phone"));
 		patient.setBloodGroup(request.getParameter("bloodGroup"));
 		patient.setPassword(request.getParameter("password"));
-		patient.setConfirmPassword(request.getParameter("cPassword"));
 		
-	//	String output = 
-		patientServiceImpl.registerPatient(patient);
-		//response.getWriter().write(output);
+		String output = patientServiceImpl.registerPatient(patient);
+		System.out.println(output);
+		response.getWriter().write(output);
 		
 	}
 
 	
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-//		Map paras = getParasMap(request);
-//		
-//		paras.get("hidePatientIdSave").toString();
-//		paras.get("firstName").toString();
-//		paras.get("lastName").toString();
-//		paras.get("gender").toString();
-//		paras.get("NIC").toString();
-//		paras.get("DOB").toString();
-//		paras.get("email").toString();
-//		paras.get("phone").toString();
-//		paras.get("bloodGroup").toString();
-//		paras.get("password").toString();
-//		paras.get("cPassword").toString();
-//		
-//		String output = patientObj.updatePatientDetails(paras);
+		Map paras = getParasMap(request);
+		
+		System.out.println("Patient API put method");
+		System.out.println("patient id: " + paras.get("hidePatientIdSave").toString());
+		System.out.println("paymeint name: " + paras.get("firstName").toString());
+		
+		String output = patientServiceImpl.updatePatientDetails(
+				paras.get("hidePatientIdSave").toString(),
+				paras.get("firstName").toString(),
+				paras.get("lastName").toString(),
+				paras.get("gender").toString(),
+				paras.get("NIC").toString(),
+				paras.get("DOB").toString(),
+				paras.get("bloodGroup").toString(),
+				paras.get("email").toString(),
+				paras.get("phone").toString(),				
+				paras.get("password").toString());
+
+		response.getWriter().write(output);
 		
 	}
 

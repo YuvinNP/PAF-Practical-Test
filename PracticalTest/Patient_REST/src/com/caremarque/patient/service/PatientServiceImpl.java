@@ -44,8 +44,8 @@ public class PatientServiceImpl implements IPatientService {
 
 			con = DBConnection.getDBConnection();
 
-			String query = "INSERT INTO patient(patientId, firstName, lastName, gender, NIC, DOB, email, phone, bloodGroup, password, cPassword) "
-					+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			String query = "INSERT INTO patient(patientId, firstName, lastName, gender, NIC, DOB, bloodGroup, email, phone, password) "
+					+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 			preparedStmt = con.prepareStatement(query);
 
@@ -57,17 +57,16 @@ public class PatientServiceImpl implements IPatientService {
 				preparedStmt.setString(Constants.COLUMN_INDEX_FOUR, patient.getGender());
 				preparedStmt.setString(Constants.COLUMN_INDEX_FIVE, patient.getNIC());
 				preparedStmt.setString(Constants.COLUMN_INDEX_SIX, patient.getDOB());
-				preparedStmt.setString(Constants.COLUMN_INDEX_SEVEN, patient.getEmail());
-				preparedStmt.setString(Constants.COLUMN_INDEX_EIGHT, patient.getPhone());
-				preparedStmt.setString(Constants.COLUMN_INDEX_NINE, patient.getBloodGroup());
+				preparedStmt.setString(Constants.COLUMN_INDEX_SEVEN, patient.getBloodGroup());
+				preparedStmt.setString(Constants.COLUMN_INDEX_EIGHT, patient.getEmail());
+				preparedStmt.setString(Constants.COLUMN_INDEX_NINE, patient.getPhone());
 				preparedStmt.setString(Constants.COLUMN_INDEX_TEN, patient.getPassword());
-				preparedStmt.setString(Constants.COLUMN_INDEX_ELEVEN, patient.getConfirmPassword());
 				preparedStmt.executeUpdate();
 
-				//String newPatient = getAllPatients();
+				String newPatient = getAllPatients();
 
-				output = "{\"status\" : \"success\", \"data\" : \"Successfully registered\"}";
-				//output = "{\"status\":\"success\", \"data\": \"" + newPatient + "\"}";
+				//output = "{\"status\" : \"success\", \"data\" : \"Successfully registered\"}";
+				output = "{\"status\":\"success\", \"data\": \"" + newPatient + "\"}";
 			
 
 		} catch (Exception e) {
@@ -134,86 +133,6 @@ public class PatientServiceImpl implements IPatientService {
 			return patientList;
 		}
 
-	/*// to get details of one patient
-	@Override
-	public String getPatientDetailById(int patientId) {
-
-		String output = "";
-		ResultSet rs = null;
-
-		try {
-			con = DBConnection.getDBConnection();
-
-			String query = "SELECT * FROM patient WHERE patientId = '" + patientId + "'";
-
-			st = con.createStatement();
-			rs = st.executeQuery(query);
-
-			output = "<table border=\"1\"> " + "<tr>" + "<th>Patient Id</th> " + "<th>First Name</th> "
-					+ "<th>Last Name</th> " + "<th>Gender</th> " + "<th>NIC</th> " + "<th>DOB</th> " + "<th>Email</th> "
-					+ "<th>Phone</th> " + "<th>Blood Group</th> " + "<th>Allergies</th> " + "<th>Password</th> "
-					+ "</tr>";
-
-			while (rs.next()) {
-
-				String paId = rs.getString("patientId");
-				String firstName = rs.getString("firstName");
-				String lastName = rs.getString("lastName");
-				String gender = rs.getString("gender");
-				String nic = rs.getString("NIC");
-				String dob = rs.getString("DOB");
-				String email = rs.getString("email");
-				String phone = rs.getString("phone");
-				String bloodGroup = rs.getString("bloodGroup");
-				String password = rs.getString("password");
-
-				output += "<tr><td><input id = 'hidePatientIdUpdate' name = 'hidePatientIdUpdate' type='hidden' value = '" + paId + "'>" + paId + "</td>";
-				output += "<td>" + firstName + "</td>";
-				output += "<td>" + lastName + "</td>";
-				output += "<td>" + gender + "</td>";
-				output += "<td>" + nic + "</td>";
-				output += "<td>" + dob + "</td>";
-				output += "<td>" + email + "</td>";
-				output += "<td>" + phone + "</td>";
-				output += "<td>" + bloodGroup + "</td>";
-				output += "<td>" + password + "</td>";
-				output += "<td><input name = 'btnUpdate' type = 'button' value = 'Update' class = 'btnUpdate btn btn-secondary'></td>"
-						+ "<td><input name = 'btnRemove' type = 'button' value = 'Remove' class = 'btnRemove btn btn-danger' data-patientid = '"+ paId +"'>" 
-						+ "</td></tr>";
-						
-
-			}
-			// Complete the html table
-			output += "</table>";
-
-		} catch (Exception e) {
-
-			output = "Error while reading the patient details...!";
-			log.log(Level.SEVERE, e.getMessage());
-
-		} finally {
-
-			try {
-				if (st != null) {
-					st.close();
-				}
-
-				if (con != null) {
-					con.close();
-				}
-
-				if (rs != null) {
-					rs.close();
-				}
-
-			} catch (Exception e) {
-				log.log(Level.SEVERE, e.getMessage());
-			}
-		}
-		return output;
-
-	}*/
-
 	// to get details of all the registered patients
 	@Override
 	public String getAllPatients() {
@@ -224,15 +143,16 @@ public class PatientServiceImpl implements IPatientService {
 		try {
 			con = DBConnection.getDBConnection();
 
-			String query = "SELECT patientId, firstName, lastName, gender, NIC, DOB, email, phone, bloodGroup, password  FROM patient";
+//			String query = "SELECT patientId, firstName, lastName, gender, NIC, DOB, email, phone, bloodGroup, password  FROM patient";
+			String query = "SELECT * FROM patient";
 
 			st = con.createStatement();
 			rs = st.executeQuery(query);
 
 			output = "<table class = \"table table-striped table-responsive\" style=\"width:120%; margin-left: -40px\">" +
 					 "<tr style=\"background-color:#000099; color:#ffffff;\"><th>Patient Id</th>" + "<th>First Name</th>" + "<th>Last Name</th>" +
-					 "<th>Gender</th>" + "<th>NIC</th>" + "<th>DOB</th>" + "<th>Email</th>" +
-					 "<th>Phone</th>" + "<th>Blood Group</th>" + "<th>Password</th>" + "<th>Update</th>" + "<th>Remove</th></tr>";
+					 "<th>Gender</th>" + "<th>NIC</th>" + "<th>DOB</th>" + "<th>Blood Group</th>" +
+					 "<th>Email</th>" + "<th>Phone</th>" + "<th>Password</th>" + "<th>Update</th>" + "<th>Remove</th></tr>";
 
 			while (rs.next()) {
 
@@ -242,9 +162,9 @@ public class PatientServiceImpl implements IPatientService {
 				String gender = rs.getString("gender");
 				String nic = rs.getString("NIC");
 				String dob = rs.getString("DOB");
-				String email = rs.getString("email");
-				String phone = rs.getString("phone");
 				String bloodGroup = rs.getString("bloodGroup");
+				String email = rs.getString("email");
+				String phone = rs.getString("phone");	
 				String password = rs.getString("password");
 
 				output += "<tr><td><input id = 'hidePatientIdUpdate' name = 'hidePatientIdUpdate' type='hidden' value = '" + patientId + "'>" + patientId + "</td>";
@@ -253,9 +173,9 @@ public class PatientServiceImpl implements IPatientService {
 				output += "<td>" + gender + "</td>";
 				output += "<td>" + nic + "</td>";
 				output += "<td>" + dob + "</td>";
+				output += "<td>" + bloodGroup + "</td>";
 				output += "<td>" + email + "</td>";
 				output += "<td>" + phone + "</td>";
-				output += "<td>" + bloodGroup + "</td>";
 				output += "<td>" + password + "</td>";
 				output += "<td><input name = 'btnUpdate' type = 'button' value = 'Update' class = 'btnUpdate btn btn-success btn-sm'></td>"
 						+ "<td><input name = 'btnRemove' type = 'button' value = 'Remove' class = 'btnRemove btn btn-danger btn-sm' data-patientid = '"+ patientId +"'>" 
@@ -295,7 +215,7 @@ public class PatientServiceImpl implements IPatientService {
 
 	// to update patient details
 	@Override
-	public String updatePatientDetails(Patient patient) {
+	public String updatePatientDetails(String patientId, String fName, String lName, String gender, String nic, String dob, String bloodGroup, String email, String phone, String pwd) {
 
 		String output = "";
 
@@ -303,22 +223,22 @@ public class PatientServiceImpl implements IPatientService {
 
 			con = DBConnection.getDBConnection();
 
-			String query = "UPDATE patient SET firstName=?, lastName=?, gender=?, NIC=?, DOB=?, phone=?, bloodGroup=?, allergies=?, password=?, cPassword=?"
+			String query = "UPDATE patient SET firstName=?, lastName=?, gender=?, NIC=?, DOB=?, bloodGroup=?, email=?, phone=?, password=?"
 					+ " WHERE patientId=? ";
 			
 
 			preparedStmt = con.prepareStatement(query);
 			
-			preparedStmt.setString(Constants.COLUMN_INDEX_ONE, patient.getFirstName());
-			preparedStmt.setString(Constants.COLUMN_INDEX_TWO, patient.getLastName());
-			preparedStmt.setString(Constants.COLUMN_INDEX_THREE, patient.getGender());
-			preparedStmt.setString(Constants.COLUMN_INDEX_FOUR, patient.getNIC());
-			preparedStmt.setString(Constants.COLUMN_INDEX_FIVE, patient.getDOB());
-			preparedStmt.setString(Constants.COLUMN_INDEX_SIX, patient.getPhone());
-			preparedStmt.setString(Constants.COLUMN_INDEX_SEVEN, patient.getBloodGroup());
-			preparedStmt.setString(Constants.COLUMN_INDEX_EIGHT, patient.getPassword());
-			preparedStmt.setString(Constants.COLUMN_INDEX_NINE, patient.getConfirmPassword());
-			preparedStmt.setString(Constants.COLUMN_INDEX_TEN, patient.getPatientId());
+			preparedStmt.setString(Constants.COLUMN_INDEX_ONE, fName);
+			preparedStmt.setString(Constants.COLUMN_INDEX_TWO, lName);
+			preparedStmt.setString(Constants.COLUMN_INDEX_THREE, gender);
+			preparedStmt.setString(Constants.COLUMN_INDEX_FOUR, nic);
+			preparedStmt.setString(Constants.COLUMN_INDEX_FIVE, dob);
+			preparedStmt.setString(Constants.COLUMN_INDEX_SIX, bloodGroup);
+			preparedStmt.setString(Constants.COLUMN_INDEX_SEVEN, email);
+			preparedStmt.setString(Constants.COLUMN_INDEX_EIGHT, phone);
+			preparedStmt.setString(Constants.COLUMN_INDEX_NINE, pwd);
+			preparedStmt.setString(Constants.COLUMN_INDEX_TEN, patientId);
 			
 			preparedStmt.execute();
 			

@@ -48,6 +48,7 @@ function onPatientRegisterComplete(response, status){
 		
 		var resultSet = JSON.parse(response);
 		
+		
 		if(resultSet.status.trim() == "success"){
 			$("#alertSuccess").text("Successfully registered to the system..!");
 			$("#alertSuccess").show();
@@ -82,9 +83,10 @@ $(document).on("click", ".btnUpdate", function(event)
 	$("#NIC").val($(this).closest("tr").find('td:eq(4)').text());
 	$("#DOB").val($(this).closest("tr").find('td:eq(5)').text());
 	$("#bloodGroup").val($(this).closest("tr").find('td:eq(6)').text());
-	$("#phone").val($(this).closest("tr").find('td:eq(7)').text());
-	$("#password").val($(this).closest("tr").find('td:eq(8)').text());
-	$("#cPassword").val($(this).closest("tr").find('td:eq(9)').text());
+	$("#email").val($(this).closest("tr").find('td:eq(7)').text());
+	$("#phone").val($(this).closest("tr").find('td:eq(8)').text());
+	$("#password").val($(this).closest("tr").find('td:eq(9)').text());
+	
 	
 });
 
@@ -115,7 +117,7 @@ function onPatientDeleteComplete(response, status){
 			 $("#alertSuccess").text("Successfully deleted.");
 			 $("#alertSuccess").show();
 			 
-			 $("#divItemsGrid").html(resultSet.data);
+			 $("#divPatientsGrid").html(resultSet.data);
 			 
 		} else if (resultSet.status.trim() == "error"){
 			 $("#alertError").text(resultSet.data);
