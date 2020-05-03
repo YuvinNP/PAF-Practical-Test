@@ -7,12 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.caremarque.patient.model.Patient;
+import com.caremarque.patient.service.PatientServiceImpl;
+
 /**
  * Servlet implementation class PatientAPI
  */
 @WebServlet("/PatientAPI")
 public class PatientAPI extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
+	
+	PatientServiceImpl patientObj = new PatientServiceImpl();
+	Patient patient = new Patient();
 
     /**
      * Default constructor. 
@@ -30,8 +37,21 @@ public class PatientAPI extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+//		patientObj.registerPatient(
+//				request.getParameter("firstName"),
+//				request.getParameter("lastName"),
+//				request.getParameter("gender"),
+//				request.getParameter("NIC"),
+//				request.getParameter("DOB"),
+//				request.getParameter("email"),
+//				request.getParameter("phone"),
+//				request.getParameter("bloodGroup"),
+//				request.getParameter("password"),
+//				request.getParameter("cPassword"),
+//				request.getParameter("firstName"));
 		
-		doGet(request, response);
+		String output = patientObj.registerPatient(patient);
+		response.getWriter().write(output);
 	}
 
 	

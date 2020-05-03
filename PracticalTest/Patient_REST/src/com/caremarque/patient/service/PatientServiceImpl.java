@@ -297,8 +297,8 @@ public class PatientServiceImpl implements IPatientService {
 		return output;
 
 	}
-
-/*	// to update patient details
+/*
+	// to update patient details
 	@Override
 	public String updatePatientDetails(Patient patient) {
 
@@ -321,10 +321,9 @@ public class PatientServiceImpl implements IPatientService {
 			preparedStmt.setString(Constants.COLUMN_INDEX_FIVE, patient.getDOB());
 			preparedStmt.setString(Constants.COLUMN_INDEX_SIX, patient.getPhone());
 			preparedStmt.setString(Constants.COLUMN_INDEX_SEVEN, patient.getBloodGroup());
-			preparedStmt.setString(Constants.COLUMN_INDEX_EIGHT, patient.getAllergy());
-			preparedStmt.setString(Constants.COLUMN_INDEX_NINE, patient.getPassword());
-			preparedStmt.setString(Constants.COLUMN_INDEX_TEN, patient.getConfirmPassword());
-			preparedStmt.setString(Constants.COLUMN_INDEX_ELEVEN, patient.getPatientId());
+			preparedStmt.setString(Constants.COLUMN_INDEX_EIGHT, patient.getPassword());
+			preparedStmt.setString(Constants.COLUMN_INDEX_NINE, patient.getConfirmPassword());
+			preparedStmt.setString(Constants.COLUMN_INDEX_TEN, patient.getPatientId());
 			
 			preparedStmt.execute();
 
@@ -397,7 +396,7 @@ public class PatientServiceImpl implements IPatientService {
 
 		return output;
 	}
-*/
-	
+
+	*/
 
 }

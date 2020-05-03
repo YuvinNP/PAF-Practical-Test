@@ -32,15 +32,17 @@ $(document).on("click", "#btnSave", function(event)
 function validateForm()
 {
 
+	
 	if($("#fName").val().trim() == "")
 	{
 		return "Insert First Name...!";
 	}
+	
 	if($("#lName").val().trim() == "")
 	{
 		return "Insert Last Name...!";
 	}
-	if($("#gender").val().trim() == "")
+	if($("#gender").val() == "0")
 	{
 		return "Select Gender...!";
 	}
@@ -52,7 +54,7 @@ function validateForm()
 	{
 		return "Insert Date Of Birth...!";
 	}
-	if($("#bloodGroup").val().trim() == "")
+	if($("#bloodGroup").val() == "0")
 	{
 		return "Select Blood Group...!";
 	}
