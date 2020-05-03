@@ -96,10 +96,18 @@ public class DoctorServiceImpl implements IDoctorService {
 							  }
 						}
 					
+					
+					//new code
+					String newDoctor = getDoctors();
+					output = "{\"status\":\"success\", \"data\": \"" +
+							newDoctor + "\"}";
+					
 				
 				 }catch (Exception e) {
 					
-					output = "Error when Inserting the Doctor...!";
+					//output = "Error when Inserting the Doctor...!";
+					 
+					 output = "{\"status\":\"error\", \"data\": \"Error while inserting doctor details.\"}";
 					System.err.println(e.getMessage());
 					log.log(Level.SEVERE, e.getMessage());
 					
@@ -127,7 +135,7 @@ public class DoctorServiceImpl implements IDoctorService {
 	
 
 		
-		//implementation of getDoctor method
+		//..........implementation of getDoctor method...........
 		
 		@Override
 		public String getDoctor(String doctorId) {
@@ -163,6 +171,7 @@ public class DoctorServiceImpl implements IDoctorService {
 						+"<th>email</th>"
 						+"<th>password</th>"
 						+"<th>confirmPassword</th></tr>";
+					
 				
 				while(rs.next()) {
 					
@@ -256,7 +265,8 @@ public class DoctorServiceImpl implements IDoctorService {
 						+"<th>email</th>"
 						+"<th>doctorCharges</th>"
 						+"<th>password</th>"
-						+"<th>confirmPassword</th></tr>";
+						+"<th>confirmPassword</th></tr>"
+						+"<th>Update</th><th>Remove</th></tr>";
 				
 				while(rs.next()) {
 					
@@ -272,7 +282,8 @@ public class DoctorServiceImpl implements IDoctorService {
 					String password = rs.getString("password");
 					String confirmPassword = rs.getString("confirmPassword");
 					
-					output += "<tr><td>" + doctorId + "</td>";
+					output += "<tr><td><input id='hidDoctorIDUpdate' name='hidDoctorIDUpdate' type='hidden' value='"+ doctorId 
+								+"'>"+ "</td>";
 					output += "<td>" + firstName + "</td>";
 					output += "<td>" + lastName + "</td>";
 					output += "<td>" + regNo + "</td>";
@@ -283,6 +294,10 @@ public class DoctorServiceImpl implements IDoctorService {
 					output += "<td>" + doctorCharges + "</td>";
 					output += "<td>" + password + "</td>";
 					output += "<td>" + confirmPassword + "</td></tr>";
+					
+					output += "<td><input name='btnUpdate' type='button' value='Update' class='btnUpdate btn btn-secondary'></td>"
+							+ "<td><input name='btnRemove' type='button' value='Remove' class='btnRemove btn btn-danger'data-doctorid='"
+							+ doctorId + "'>" + "</td></tr>";
 				}
 				
 				output += "</table>";
@@ -365,10 +380,17 @@ public class DoctorServiceImpl implements IDoctorService {
 						}
 				}
 				
+				//new code
+				String newDoctor = getDoctors();
+				output = "{\"status\":\"success\", \"data\": \"" +
+						newDoctor + "\"}";
+				
 				
 			}catch(Exception e) {
 				
-							output = "Error while updating the doctor..!";
+							//output = "Error while updating the doctor..!";
+							
+							output = "{\"status\":\"error\", \"data\": \"Error while updating doctor details.\"}";
 							System.out.println(e.getMessage());
 			}finally {
 				
@@ -414,12 +436,14 @@ public class DoctorServiceImpl implements IDoctorService {
 				
 				preparedStatmnt.execute();
 				
-					output = "Deleted successfully..!";
+					//output = "Deleted successfully..!";
 				
 
 			}catch(Exception e) {
 				
-				output = "Error while deleting item..!";
+				//output = "Error while deleting item..!";
+				
+				output = "{\"status\":\"error\", \"data\": \"Error while deleting the item.\"}";
 				System.out.println(e.getMessage());
 			
 			}finally {
@@ -580,7 +604,7 @@ public class DoctorServiceImpl implements IDoctorService {
 		
 	
 		//to validate login
-	
+	/*
 		@Override
 		public String login(Doctor doctor) {
 			
@@ -638,7 +662,8 @@ public class DoctorServiceImpl implements IDoctorService {
 		
 			
 				return responseLine;
-	    }
+	    } 
+	 */
 		
 	
 

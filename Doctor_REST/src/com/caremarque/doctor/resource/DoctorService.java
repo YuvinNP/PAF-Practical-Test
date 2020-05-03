@@ -184,7 +184,7 @@ import com.google.gson.JsonParser;
 					
 				} 
 				
-				
+			/*	
 				//login method
 				@POST
 				@Path("/login")
@@ -204,5 +204,7 @@ import com.google.gson.JsonParser;
 					
 					return output;
 				}
+				
+				*/
 				
 }
