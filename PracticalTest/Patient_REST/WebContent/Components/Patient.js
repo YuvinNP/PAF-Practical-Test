@@ -36,13 +36,13 @@ $(document).on("click", "#btnSave", function(event)
 		dataType : "text",
 		complete : function(response, status)
 		{
-			onPatientSaveComplete(response.responseText, status);
+			onPatientRegisterComplete(response.responseText, status);
 		}
 	});
 	
 });
 
-function onPatientSaveComplete(response, status)
+function onPatientRegisterComplete(response, status)
 {
 	if(status == "success")
 	{
