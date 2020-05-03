@@ -237,7 +237,7 @@ public class PatientServiceImpl implements IPatientService {
 			output = "<table border= '1'>" +
 					 "<tr><th>Patient Id</th>" + "<th>First Name</th>" + "<th>Last Name</th>" +
 					 "<th>Gender</th>" + "<th>NIC</th>" + "<th>DOB</th>" + "<th>Email</th>" +
-					 "<th>Phone</th>" + "<th>Blood Group</th>" + "<th>Update</th>" + "<th>Remove</th></tr>";
+					 "<th>Phone</th>" + "<th>Blood Group</th>" + "<th>Password</th>" + "<th>Update</th>" + "<th>Remove</th></tr>";
 
 			while (rs.next()) {
 
