@@ -238,7 +238,6 @@ public class DoctorServiceImpl implements IDoctorService {
 		
 		@Override
 		public String getDoctors() {
-			// TODO Auto-generated method stub
 	
 			String output = "";
 			Statement st = null;
@@ -266,7 +265,7 @@ public class DoctorServiceImpl implements IDoctorService {
 						+"<th>doctorCharges</th>"
 						+"<th>password</th>"
 						+"<th>confirmPassword</th></tr>"
-						+"<th>Update</th><th>Remove</th></tr>";
+						+"<th>Update</th>"+"<th>Remove</th></tr>";
 				
 				while(rs.next()) {
 					
@@ -334,7 +333,7 @@ public class DoctorServiceImpl implements IDoctorService {
 		}
 		
 	
-		//implementation of updateDoctor method
+		//implementation of updateDoctor method..
 		
 		@Override
 		public String updateDoctor(String doctorId,Doctor doctor) {
