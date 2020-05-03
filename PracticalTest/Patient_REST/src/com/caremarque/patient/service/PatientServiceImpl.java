@@ -62,15 +62,12 @@ public class PatientServiceImpl implements IPatientService {
 				preparedStmt.setString(Constants.COLUMN_INDEX_NINE, patient.getBloodGroup());
 				preparedStmt.setString(Constants.COLUMN_INDEX_TEN, patient.getPassword());
 				preparedStmt.setString(Constants.COLUMN_INDEX_ELEVEN, patient.getConfirmPassword());
+				preparedStmt.executeUpdate();
 
-				int result = 0;
+				//String newPatient = getAllPatients();
 
-				result = preparedStmt.executeUpdate();
-
-				if (result > 0) {
-
-					output = "{\"status\" : \"success\", \"data\" : \"Successfully registered\"}";
-				}
+				output = "{\"status\" : \"success\", \"data\" : \"Successfully registered\"}";
+				//output = "{\"status\":\"success\", \"data\": \"" + newPatient + "\"}";
 			
 
 		} catch (Exception e) {

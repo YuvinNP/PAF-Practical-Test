@@ -39,6 +39,9 @@ public class PatientAPI extends HttpServlet {
 		
 		Patient patient = new Patient();
 		
+		System.out.println("Patiemt Api");
+		doGet(request, response);
+		
 		patient.setFirstName(request.getParameter("firstName"));
 		patient.setLastName(request.getParameter("lastName"));
 		patient.setGender(request.getParameter("gender"));
@@ -50,8 +53,9 @@ public class PatientAPI extends HttpServlet {
 		patient.setPassword(request.getParameter("password"));
 		patient.setConfirmPassword(request.getParameter("cPassword"));
 		
-		String output = patientServiceImpl.registerPatient(patient);
-		response.getWriter().write(output);
+	//	String output = 
+		patientServiceImpl.registerPatient(patient);
+		//response.getWriter().write(output);
 		
 	}
 
