@@ -229,8 +229,8 @@ public class PatientServiceImpl implements IPatientService {
 			st = con.createStatement();
 			rs = st.executeQuery(query);
 
-			output = "<table border= '1'>" +
-					 "<tr><th>Patient Id</th>" + "<th>First Name</th>" + "<th>Last Name</th>" +
+			output = "<table class = \"table table-striped table-responsive\" style=\"width:120%; margin-left: -40px\">" +
+					 "<tr style=\"background-color:#000099; color:#ffffff;\"><th>Patient Id</th>" + "<th>First Name</th>" + "<th>Last Name</th>" +
 					 "<th>Gender</th>" + "<th>NIC</th>" + "<th>DOB</th>" + "<th>Email</th>" +
 					 "<th>Phone</th>" + "<th>Blood Group</th>" + "<th>Password</th>" + "<th>Update</th>" + "<th>Remove</th></tr>";
 
@@ -257,8 +257,8 @@ public class PatientServiceImpl implements IPatientService {
 				output += "<td>" + phone + "</td>";
 				output += "<td>" + bloodGroup + "</td>";
 				output += "<td>" + password + "</td>";
-				output += "<td><input name = 'btnUpdate' type = 'button' value = 'Update' class = 'btnUpdate btn btn-secondary'></td>"
-						+ "<td><input name = 'btnRemove' type = 'button' value = 'Remove' class = 'btnRemove btn btn-danger' data-patientid = '"+ patientId +"'>" 
+				output += "<td><input name = 'btnUpdate' type = 'button' value = 'Update' class = 'btnUpdate btn btn-success btn-sm'></td>"
+						+ "<td><input name = 'btnRemove' type = 'button' value = 'Remove' class = 'btnRemove btn btn-danger btn-sm' data-patientid = '"+ patientId +"'>" 
 						+ "</td></tr>";
 
 			}

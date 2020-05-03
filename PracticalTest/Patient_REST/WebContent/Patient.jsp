@@ -13,6 +13,7 @@
 
 <!-- CSS -->
 <link rel="stylesheet" href="Views/bootstrap.min.css">
+<link rel="stylesheet" href="Views/Patient.css">
 
 <!-- JS -->
 <script src="Components/jquery-3.2.1.min.js"></script>
@@ -23,92 +24,118 @@
 <body>
 
 <div class="container">
-<div class = "row">
-<div class = "col-6">
-
-
 
 <form name="patientSignUp" id="patientSignUp">
 
-<h4>Create Your Account</h4>
-
-	<div id = "alertSuccess" class = "alert alert-success"></div>
-	<div id = "alertError" class = "alert alert-danger"></div>
-
-
+	<div class="form-title">Create Your Account</div>
+	<br><br>
 	<h5>Profile Information</h5>
-
-	<label>First Name<label_1>*</label_1></label><br/>
-		<input type="text" placeholder="Enter First Name" name="fName" id="fName" class="form-control form-control-sm"><br/>
-		
-	<label>Last Name<label_1>*</label_1></label><br/>
-		<input type="text" placeholder="Enter Last Name" name="lName" id="lName" class="form-control form-control-sm"><br/>
 	
-	<label>Gender<label_1>*</label_1></label><br/>
-		<select name="gender" id="gender" class="form-control form-control-sm">
-			<option value="0">Select Gender</option>
-			<option value="M">Male</option>
-			<option value="F">Female</option>
-		</select><br/>	
-		
-	<label>NIC<label_1>*</label_1></label><br/>
-		<input type="text" placeholder="Enter NIC Number" name="NIC" id="NIC" class="form-control form-control-sm"><br/>
-
-	<label>Date Of Birth<label_1>*</label_1></label><br/>
-		<input type="text" placeholder="Enter Date Of Birth" name="DOB" id="DOB" class="form-control form-control-sm"><br/>	
+	<div class = "row">	
+		<div class = "col">
+			<label>First Name<label_1> *</label_1></label><br/>
+				<input type="text" placeholder="Enter First Name" name="fName" id="fName" class="form-control form-control-sm"><br/>
+		</div>
+					
+		<div class = "col">	
+			<label>Last Name<label_1> *</label_1></label><br/>
+				<input type="text" placeholder="Enter Last Name" name="lName" id="lName" class="form-control form-control-sm"><br/>
+		</div>
+	</div>
 	
-	<label>Blood Group<label_1>*</label_1></label><br/>
-		<select name="bloodGroup" id="bloodGroup" class="form-control form-control-sm">
-			<option value="0">Select Blood Group</option>
-			<option value="A+">A+</option>
-			<option value="A-">A-</option>
-			<option value="B+">B+</option>
-			<option value="B-">B-</option>
-			<option value="AB">AB</option>
-			<option value="O+">O+</option>
-			<option value="O-">O-</option>
-		</select><br/>	
-		
-	<h4>Contact Information</h4>
-
-	<label>Email<label_1>*</label_1></label><br/>
-		<input type="text" placeholder="Enter Email" name="email" id="email" class="form-control form-control-sm"><br/>
 	
-	<label>Telephone Number<label_1>*</label_1></label><br/>
-		<input type="text" placeholder="Enter Telephone Number" name="phone" id="phone" class="form-control form-control-sm"><br/>
+	<div class = "row">	
+		<div class = "col">
+			<label>Gender<label_1> *</label_1></label><br/>
+				<select name="gender" id="gender" class="form-control form-control-sm">
+					<option value="0">Select Gender</option>
+					<option value="M">Male</option>
+					<option value="F">Female</option>
+				</select><br/>	
+		</div>
 		
-	<h2>Login Information</h2>
+		<div class = "col">
+			<label>NIC<label_1> *</label_1></label><br/>
+				<input type="text" placeholder="Enter NIC Number" name="NIC" id="NIC" class="form-control form-control-sm"><br/>
+		</div>
+	</div>
+	
+	<div class = "row">	
+		<div class = "col">
+			<label>Date Of Birth<label_1> *</label_1></label><br/>
+				<input type="text" placeholder="Enter Date Of Birth" name="DOB" id="DOB" class="form-control form-control-sm"><br/>	
+		</div>
+	
+		<div class = "col">
+			<label>Blood Group<label_1> *</label_1></label><br/>
+				<select name="bloodGroup" id="bloodGroup" class="form-control form-control-sm">
+					<option value="0">Select Blood Group</option>
+					<option value="A+">A+</option>
+					<option value="A-">A-</option>
+					<option value="B+">B+</option>
+					<option value="B-">B-</option>
+					<option value="AB">AB</option>
+					<option value="O+">O+</option>
+					<option value="O-">O-</option>
+				</select><br/>	
+		</div>
+	</div>
+			
+	<h5>Contact Information</h5>
 
-	<label>Password<label_1>*</label_1></label><br/> 
-		<input type="password" placeholder="Enter Password" name="password" id="password" class="form-control form-control-sm"><br/> 
+	<div class = "row">	
+	 	<div class = "col">
+			 <label>Email<label_1> *</label_1></label><br/>
+				<input type="text" placeholder="Enter Email" name="email" id="email" class="form-control form-control-sm"><br/>
+	 	</div>
+	 
+		<div class = "col">
+			<label>Telephone Number<label_1> *</label_1></label><br/>
+				<input type="text" placeholder="Enter Telephone Number" name="phone" id="phone" class="form-control form-control-sm"><br/>
+		</div>
+	</div>
+	
+	<h5>Login Information</h5>
+
+	<div class = "row">	
+		<div class = "col">
+			<label>Password<label_1> *</label_1></label><br/> 
+				<input type="password" placeholder="Enter Password" name="password" id="password" class="form-control form-control-sm"><br/> 
+		</div>
 		
-	<label>Confirm Password<label_1>*</label_1></label><br/>
-		<input type="password" placeholder="confirm Password" name="cPassword" id="cPassword" class="form-control form-control-sm"><br/>
-		
+		<div class = "col">
+			<label>Confirm Password<label_1> *</label_1></label><br/>
+				<input type="password" placeholder="confirm Password" name="cPassword" id="cPassword" class="form-control form-control-sm"><br/>
+		</div>
+	</div>
+	
 	<hr>
 
 	<p>
 		By creating an account you agree to our <a href="#"><b>Terms & Privacy Policy</b></a>
 	</p>
-	<br />	
+	
 	
 	<input id = "btnSave" name="btnSave" type = "button" value="Sign Up" class = "btn btn-primary">
 	<input type = "hidden" id = "hidePatientIdSave" name = "hidePatientIdSave" value = "">
-	<br />
 	
-	<p style="margin-top: 1%;">Already you are a member?<a href="#"><b>Sign in</b></a></p>
-	<br />		
+	<br><br>
+	
+	<div id = "alertSuccess" class = "alert alert-success"></div>
+	<div id = "alertError" class = "alert alert-danger"></div>
+	
+			
 </form>
 
-</div>
-</div>
-</div>
+
 
 <div id="divPatientsGrid">
  <%
  PatientServiceImpl patientObj = new PatientServiceImpl();
  out.print(patientObj.getAllPatients());
  %>
+</div>
+
 </div>
 
 </body>
