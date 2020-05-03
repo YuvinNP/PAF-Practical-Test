@@ -20,7 +20,7 @@ public class PatientAPI extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	
-	PatientServiceImpl patientObj = new PatientServiceImpl();
+	PatientServiceImpl patientServiceImpl = new PatientServiceImpl();
 	
 
     /**
@@ -50,7 +50,7 @@ public class PatientAPI extends HttpServlet {
 		patient.setPassword(request.getParameter("password"));
 		patient.setConfirmPassword(request.getParameter("cPassword"));
 		
-		String output = patientObj.registerPatient(patient);
+		String output = patientServiceImpl.registerPatient(patient);
 		response.getWriter().write(output);
 		
 	}
@@ -58,11 +58,32 @@ public class PatientAPI extends HttpServlet {
 	
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+//		Map paras = getParasMap(request);
+//		
+//		paras.get("hidePatientIdSave").toString();
+//		paras.get("firstName").toString();
+//		paras.get("lastName").toString();
+//		paras.get("gender").toString();
+//		paras.get("NIC").toString();
+//		paras.get("DOB").toString();
+//		paras.get("email").toString();
+//		paras.get("phone").toString();
+//		paras.get("bloodGroup").toString();
+//		paras.get("password").toString();
+//		paras.get("cPassword").toString();
+//		
+//		String output = patientObj.updatePatientDetails(paras);
+		
 	}
 
 	
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		Map paras = getParasMap(request);
+		
+		String output = patientServiceImpl.deletePatient(paras.get("patientId").toString());
+		
+		response.getWriter().write(output);
 	}
 	
 	private static Map getParasMap(HttpServletRequest request) {
