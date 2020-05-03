@@ -26,22 +26,70 @@ $(document).on("click", "#btnSave", function(event)
 	}
 	
 	//If valid
-	$("#patientSignUp").submit();
+	var type = ($("hidePatientIdSave").val() == "") ? "POST" : "PUT";
+	
+	$.ajax(
+	{
+		url : "PatientAPI",
+		type : type,
+		data : $("patientSignUp").serialize(),
+		dataType : "text",
+		complete : function(response, status)
+		{
+			onPatientSaveComplete(response.responseText, status);
+		}
+	});
+	
 });
+
+function onPatientSaveComplete(response, status)
+{
+	if(status == "success")
+	{
+		var resultSet = JSON.parse(response);
+		
+		if(resultSet.status.trim() == "success")
+		{
+			$("#alertSuccess").text("Successfully registered to the system..!");
+			$("#alertSuccess").show();
+			
+			$("divPatientsGrid").html(resultSet.data);
+		
+		}else if(resultSet.status.trim() == "error")
+		{
+			$("#alertError").text(resultSet.data);
+			 $("#alertError").show(); 
+		}
+		
+	}else if(status == "error")
+	{
+		$("#alertError").text("Error while saving.");
+		 $("#alertError").show(); 
+	
+	}else
+	{
+		$("#alertError").text("Unknown error while saving..");
+		 $("#alertError").show(); 
+	}
+	
+	$("#hidePatientIdSave").val("");
+	 $("#patientSignUp")[0].reset(); 
+}
 
 //Update
 $(document).on("click", ".btnUpdate", function(event)
 {
 	$("hidePatientIdSave").val($(this).closest("tr").find('hidePatientIdUpdate').val());
-	$("#fName").val($(this).closest("tr").find('td:eq(0)').text());
-	$("#lName").val($(this).closest("tr").find('td:eq(1)').text());
-	$("#gender").val($(this).closest("tr").find('td:eq(2)').text());
-	$("#NIC").val($(this).closest("tr").find('td:eq(3)').text());
-	$("#DOB").val($(this).closest("tr").find('td:eq(4)').text());
-	$("#bloodGroup").val($(this).closest("tr").find('td:eq(5)').text());
-	$("#phone").val($(this).closest("tr").find('td:eq(6)').text());
-	$("#password").val($(this).closest("tr").find('td:eq(7)').text());
-	$("#cPassword").val($(this).closest("tr").find('td:eq(8)').text());
+	$("#fName").val($(this).closest("tr").find('td:eq(1)').text());
+	$("#lName").val($(this).closest("tr").find('td:eq(2)').text());
+	$("#gender").val($(this).closest("tr").find('td:eq(3)').text());
+	$("#NIC").val($(this).closest("tr").find('td:eq(4)').text());
+	$("#DOB").val($(this).closest("tr").find('td:eq(5)').text());
+	$("#bloodGroup").val($(this).closest("tr").find('td:eq(6)').text());
+	$("#phone").val($(this).closest("tr").find('td:eq(7)').text());
+	$("#password").val($(this).closest("tr").find('td:eq(8)').text());
+	$("#cPassword").val($(this).closest("tr").find('td:eq(9)').text());
+	
 });
 
 ////Delete
