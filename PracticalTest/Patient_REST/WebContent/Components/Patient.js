@@ -29,6 +29,22 @@ $(document).on("click", "#btnSave", function(event)
 	$("#patientSignUp").submit();
 });
 
+//Update
+$(document).on("click", ".btnUpdate", function(event)
+{
+	$("hidePatientIdSave").val($(this).closest("tr").find('hidePatientIdUpdate').val());
+	$("#fName").val($(this).closest("tr").find('td:eq(0)').text());
+	$("#lName").val($(this).closest("tr").find('td:eq(1)').text());
+	$("#gender").val($(this).closest("tr").find('td:eq(2)').text());
+	$("#NIC").val($(this).closest("tr").find('td:eq(3)').text());
+	$("#DOB").val($(this).closest("tr").find('td:eq(4)').text());
+	$("#bloodGroup").val($(this).closest("tr").find('td:eq(5)').text());
+	$("#phone").val($(this).closest("tr").find('td:eq(6)').text());
+	$("#password").val($(this).closest("tr").find('td:eq(7)').text());
+	$("#cPassword").val($(this).closest("tr").find('td:eq(8)').text());
+});
+
+//Client-Model
 function validateForm()
 {
 
