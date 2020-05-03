@@ -1,5 +1,5 @@
 package com.caremarque.doctor.model;
-//Example
+//Example..
 	public class Doctor
 	
 	{
