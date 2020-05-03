@@ -297,7 +297,7 @@ public class PatientServiceImpl implements IPatientService {
 		return output;
 
 	}
-/*
+
 	// to update patient details
 	@Override
 	public String updatePatientDetails(Patient patient) {
@@ -326,12 +326,13 @@ public class PatientServiceImpl implements IPatientService {
 			preparedStmt.setString(Constants.COLUMN_INDEX_TEN, patient.getPatientId());
 			
 			preparedStmt.execute();
-
-			output = "Patient details updated successfully..!";
+			
+			String newPatient = getAllPatients();
+			 output = "{\"status\":\"success\", \"data\": \"" + newPatient + "\"}"; 
 			
 		} catch (Exception e) {
 
-			output = "Error while updating the patient details..!";
+			output = "{\"status\":\"error\", \"data\":\"Error while updating the patient details..!\"}"; 
 			log.log(Level.SEVERE, e.getMessage());
 
 		} finally {
@@ -353,7 +354,7 @@ public class PatientServiceImpl implements IPatientService {
 		return output;
 	}
 	
-	// to delete a patient from the system
+/*	// to delete a patient from the system
 	@Override
 	public String deletePatient(String patientId) {
 

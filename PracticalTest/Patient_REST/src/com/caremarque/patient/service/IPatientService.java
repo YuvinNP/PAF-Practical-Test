@@ -14,7 +14,7 @@ public interface IPatientService {
 	
 	public String getAllPatients();
 //	
-//	public String updatePatientDetails(Patient patient);
+	public String updatePatientDetails(Patient patient);
 //
 //	public String deletePatient(String patientId);
 //	
