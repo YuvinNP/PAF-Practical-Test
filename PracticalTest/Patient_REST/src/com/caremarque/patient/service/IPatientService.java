@@ -13,10 +13,10 @@ public interface IPatientService {
 //	public String getPatientDetailById(int patientId);
 	
 	public String getAllPatients();
-//	
+	
 	public String updatePatientDetails(Patient patient);
-//
-//	public String deletePatient(String patientId);
+
+	public String deletePatient(String patientId);
 //	
 
 
