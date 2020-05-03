@@ -1,16 +1,16 @@
 //Page refresh moment
 $(document).ready(function() {
-	if ($("alertSuccess").text().trim() == "") {
+	if ($("#alertSuccess").text().trim() == "") {
 		$("#alertSuccess").hide();
 	}
 	$("#alertError").hide();
 });
 
 $(document).on("click", "#btnSave", function(event) {
-	$("alertSuccess").text("");
-	$("alertSuccess").hide();
-	$("alertError").text("");
-	$("alertError").hide();
+	$("#alertSuccess").text("");
+	$("#alertSuccess").hide();
+	$("#alertError").text("");
+	$("#alertError").hide();
 
 	var status = validateForm();
 	if (status != true) {
@@ -19,7 +19,7 @@ $(document).on("click", "#btnSave", function(event) {
 		return;
 	}
 	//If valid
-	var type = ($("#hidItemIDSave").val() == "") ? "POST" : "PUT";
+	var type = ($("#hidPaymentIDSave").val() == "") ? "POST" : "PUT";
 
 	$.ajax({
 		url : "PaymentAPI",
@@ -27,11 +27,26 @@ $(document).on("click", "#btnSave", function(event) {
 		data : $("#formItem").serialize(),
 		dataType : "text",
 		complete : function(response, status) {
+		
 			onPaymentSaveComplete(response.responseText, status);
 		}
 
 	});
 });
+
+$(document).on("click", ".btnUpdate", function(event)
+{
+	$("#hidPaymentIDSave").val($(this).closest("tr").find('#hidPaymentIdUpdate').val());
+	$("#patientId").val($(this).closest("tr").find('td:eq(1)').text());
+	$("#appointmentId").val($(this).closest("tr").find('td:eq(3)').text());
+	$("#doctorId").val($(this).closest("tr").find('td:eq(4)').text());
+	$("#hospitalId").val($(this).closest("tr").find('td:eq(5)').text());
+	$("#patientName").val($(this).closest("tr").find('td:eq(2)').text());
+	$("#email").val($(this).closest("tr").find('td:eq(12)').text());
+	$("#telephone").val($(this).closest("tr").find('td:eq(11)').text());
+	
+	$("#updateModal").modal("show");
+})
 
 function validateForm() {
 
@@ -64,7 +79,10 @@ function validateForm() {
 
 function onPaymentSaveComplete(response, status) {
 	if (status == "success") {
+	
 		var resultSet = JSON.parse(response);
+		$("#alertSuccess").text(status+ " " + resultSet);
+		$("#alertSuccess").show();
 
 		if (resultSet.status.trim() == "success") {
 			$("#alertSuccess").text("Successfully saved.");
@@ -73,16 +91,19 @@ function onPaymentSaveComplete(response, status) {
 		} else if (resultSet.status.trim() == "error") {
 			$("#alertError").text(resultSet.data);
 			$("#alertError").show();
-		} else if (status == "error") {
+		}
+	} else if (status == "error") {
 			$("#alertError").text("Error while saving.");
 			$("#alertError").show();
-		} else {
+	} else 
+		{
 			$("#alertError").text("Unknown error while saving..");
 			$("#alertError").show();
 		}
-		$("#hidItemIDSave").val("");
+	
+		$("#hidPaymentIDSave").val("");
 		$("#formItem")[0].reset();
-	}
+
 }
 
 $(document).on("click", ".btnRemove", function(event) {

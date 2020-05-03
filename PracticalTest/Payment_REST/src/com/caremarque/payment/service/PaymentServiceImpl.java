@@ -260,6 +260,7 @@ public class PaymentServiceImpl implements IPaymentService {
 				arrayList.add(payment);
 
 				output += "<tr><td style=\"color:#008AD9;font-weight: bold;\">"
+						+ "<input id='hidPaymentIdUpdate' name = 'hidPaymentIdUpdate' type='hidden' value='" +resultset.getString(Constants.COLUMN_INDEX_ONE)+"'>"
 						+ resultset.getString(Constants.COLUMN_INDEX_ONE) + "</td>";
 				output += "<td>" + resultset.getString(Constants.COLUMN_INDEX_TWO) + "</td>";
 				output += "<td>" + resultset.getString(Constants.COLUMN_INDEX_THREE) + "</td>";

@@ -113,7 +113,7 @@
 
 					</div>
 						<input type="button"  id="btnSave" name="btnSave" value="Save" class="btn btn-success">
-					 	<input type="hidden" id="hidItemIDSave" name="hidItemIDSave" value="">
+					 	<input type="hidden" id="hidPaymentIDSave" name="hidPaymentIDSave" value="">
 					<!-- <div class="form-group">
 						 <input id="btnSave" name="btnSave" type="button" value="Save" class="btn btn-success">
 						 <input type="hidden" id="hidItemIDSave" name="hidItemIDSave" value="">
@@ -152,5 +152,24 @@
 		</div>
 	</div>
 
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
