@@ -44,6 +44,22 @@ $(document).on("click", ".btnUpdate", function(event)
 	$("#cPassword").val($(this).closest("tr").find('td:eq(8)').text());
 });
 
+////Delete
+//$(document).on("click", ".btnRemove", function(event)
+//		{
+//		 $.ajax(
+//		 {
+//		 url : "PatientAPI",
+//		 type : "DELETE",
+//		 data : "patientId=" + $(this).data("patientid"),
+//		 dataType : "text",
+//		 complete : function(response, status)
+//		 {
+//		 onPatientDeleteComplete(response.responseText, status);
+//		 }
+//		 });
+//		}); 
+
 //Client-Model
 function validateForm()
 {

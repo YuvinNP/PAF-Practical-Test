@@ -6,21 +6,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import com.caremarque.patient.model.Patient;
-import com.caremarque.patient.model.PatientAuthentication;
 import com.caremarque.patient.utils.CommonUtils;
 import com.caremarque.patient.utils.Constants;
 import com.caremarque.patient.utils.DBConnection;
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.google.gson.reflect.TypeToken;
-import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.ClientResponse;
-import com.sun.jersey.api.client.WebResource;
+//import com.google.gson.Gson;
+//import com.google.gson.JsonElement;
+//import com.google.gson.JsonParser;
+//import com.google.gson.reflect.TypeToken;
+//import com.sun.jersey.api.client.Client;
+//import com.sun.jersey.api.client.ClientResponse;
+//import com.sun.jersey.api.client.WebResource;
 
 
 public class PatientServiceImpl implements IPatientService {
