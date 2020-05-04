@@ -11,11 +11,14 @@ $(document).on("click", "#updateArea", function(event) {
 	$("#insertForm").hide();
 	$("#formItemClass").show();
 	$("#alertSuccess").hide();
+	$("#alertError").hide();
 });
 
 $(document).on("click", "#insertArea", function(event) {
 	$("#formItemClass").hide();
 	$("#insertForm").show();
+	$("#alertSuccess").hide();
+	$("#alertError").hide();
 });
 
 $(document).on("click", "#btnSave", function(event) {
@@ -39,8 +42,7 @@ $(document).on("click", "#btnSave", function(event) {
 		data : $("#formItem").serialize(),
 		dataType : "text",
 		complete : function(response, status) {
-			$("#alertSuccess").text(status);
-			$("#alertSuccess").show();
+		
 			onPaymentSaveComplete(response.responseText, status);
 		}
 
@@ -84,6 +86,8 @@ $(document).on("click", ".btnUpdate", function(event)
 
 function validateForm() {
 
+	 var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+	 var emailval = $("#email").val();
 	if ($("#appointmentId").val() == "") {
 		return "Select Appointment ID";
 	}
@@ -108,6 +112,12 @@ function validateForm() {
 	if ($("#expDate").val().trim() == "") {
 		return "Insert Exp Date";
 	}
+	if ($("#email").val().trim() == ""){
+		return "Insert Email";
+	}
+	if (!emailReg.test(emailval)) {
+		return "Insert Valid Email";
+	}
 	return true;
 }
 
@@ -120,8 +130,13 @@ function onPaymentSaveComplete(response, status) {
 			$("#alertSuccess").text("Successfully saved.");
 			$("#alertSuccess").show();
 			$("#divPaymentsGrid").html(resultSet.data);
+			$("#hidPaymentIDSave").val("");
+			$("#formItem")[0].reset();
 		} else if (resultSet.status.trim() == "error") {
 			$("#alertError").text(resultSet.data);
+			$("#alertError").show();
+		} else if(resultSet.status.trim() == "AuthError") {
+			$("#alertError").text("Authentication Error");
 			$("#alertError").show();
 		}
 	} else if (status == "error") {
@@ -129,12 +144,12 @@ function onPaymentSaveComplete(response, status) {
 			$("#alertError").show();
 	} else 
 		{
-			$("#alertError").text("Unknown error while saving..");
+			$("#alertError").text("Unknown Error Occured");
 			$("#alertError").show();
 		}
 	
-		$("#hidPaymentIDSave").val("");
-		$("#formItem")[0].reset();
+//		$("#hidPaymentIDSave").val("");
+//		$("#formItem")[0].reset();
 
 }
 

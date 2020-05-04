@@ -111,6 +111,7 @@ public class PaymentServiceImpl implements IPaymentService {
 
 			} else {
 				output = "Authentication ERROR!!!";
+				output = "{\"status\":\"AuthError\", \"data\": \"Authentication Error.\"}";
 				System.out.println("Authentication ERROR!!!");
 			}
 
