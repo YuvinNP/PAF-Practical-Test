@@ -29,6 +29,31 @@ public class PatientAPI extends HttpServlet {
     public PatientAPI() {
        
     }
+    
+    private static Map getParasMap(HttpServletRequest request) {
+		
+    	System.out.println("getParasMap");
+		Map<String, String> map = new HashMap<String, String>();
+		
+		try {
+			
+			Scanner scanner = new Scanner(request.getInputStream(), "UTF-8");
+			String queryString = scanner.hasNext() ? scanner.useDelimiter("\\A").next() : "";
+			
+			scanner.close();
+			
+			String[] params = queryString.split("&");
+			
+			for(String param : params) {
+				
+				String[] p = param.split("=");
+				map.put(p[0], p[1]);
+			}					 
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return map;
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
@@ -63,11 +88,11 @@ public class PatientAPI extends HttpServlet {
 		Map paras = getParasMap(request);
 		
 		System.out.println("Patient API put method");
-		System.out.println("patient id: " + paras.get("hidePatientIdSave").toString());
+		System.out.println("patient id: " + paras.get("hidPatientIdSave").toString());
 		System.out.println("paymeint name: " + paras.get("firstName").toString());
 		
 		String output = patientServiceImpl.updatePatientDetails(
-				paras.get("hidePatientIdSave").toString(),
+				paras.get("hidPatientIdSave").toString(),
 				paras.get("firstName").toString(),
 				paras.get("lastName").toString(),
 				paras.get("gender").toString(),
@@ -92,30 +117,6 @@ public class PatientAPI extends HttpServlet {
 		response.getWriter().write(output);
 	}
 	
-	private static Map getParasMap(HttpServletRequest request) {
-			
-			Map<String, String> map = new HashMap<String, String>();
-			
-			try {
-				
-				Scanner scanner = new Scanner(request.getInputStream(), "UTF-8");
-				String queryString = scanner.hasNext() ?
-									 scanner.useDelimiter("\\A").next() : "";
-				
-				scanner.close();
-				
-				String[] params = queryString.split("&");
-				for(String param : params) {
-					
-					String[] p = param.split("=");
-					map.put(p[0], p[1]);
-				}
-									 
-			}
-			catch (Exception e) {
-				
-			}
-			return map;
-		}
+	
 
 }

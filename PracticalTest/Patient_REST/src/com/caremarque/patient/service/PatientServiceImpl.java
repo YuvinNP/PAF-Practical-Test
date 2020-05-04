@@ -166,8 +166,10 @@ public class PatientServiceImpl implements IPatientService {
 				String email = rs.getString("email");
 				String phone = rs.getString("phone");	
 				String password = rs.getString("password");
+				
+				System.out.println("GetAllAPtient : PatientId : " + patientId);
 
-				output += "<tr><td><input id = 'hidePatientIdUpdate' name = 'hidePatientIdUpdate' type='hidden' value = '" + patientId + "'>" + patientId + "</td>";
+				output += "<tr><td><input id = \"hidPatientIdUpdate\" name = \"hidPatientIdUpdate\" type=\"hidden\" value = '" + patientId + "'>" + patientId + "</td>";
 				output += "<td>" + firstName + "</td>";
 				output += "<td>" + lastName + "</td>";
 				output += "<td>" + gender + "</td>";
@@ -177,9 +179,10 @@ public class PatientServiceImpl implements IPatientService {
 				output += "<td>" + email + "</td>";
 				output += "<td>" + phone + "</td>";
 				output += "<td>" + password + "</td>";
-				output += "<td><input name = 'btnUpdate' type = 'button' value = 'Update' class = 'btnUpdate btn btn-success btn-sm'></td>"
+				output += "<td><input name = \"btnUpdate\" type = \"button\" value = \"Update\" class = \"btnUpdate btn btn-success btn-sm\"></td>"
 						+ "<td><input name = 'btnRemove' type = 'button' value = 'Remove' class = 'btnRemove btn btn-danger btn-sm' data-patientid = '"+ patientId +"'>" 
 						+ "</td></tr>";
+				System.out.println("Data retrived from the database");
 
 			}
 			// Complete the html table
@@ -238,9 +241,10 @@ public class PatientServiceImpl implements IPatientService {
 			preparedStmt.setString(Constants.COLUMN_INDEX_SEVEN, email);
 			preparedStmt.setString(Constants.COLUMN_INDEX_EIGHT, phone);
 			preparedStmt.setString(Constants.COLUMN_INDEX_NINE, pwd);
-			preparedStmt.setString(Constants.COLUMN_INDEX_TEN, patientId);
-			
+			preparedStmt.setString(Constants.COLUMN_INDEX_TEN, patientId);	
 			preparedStmt.execute();
+			
+			System.out.println("Update patintId : " + patientId);
 			
 			String newPatient = getAllPatients();
 			 output = "{\"status\":\"success\", \"data\": \"" + newPatient + "\"}"; 

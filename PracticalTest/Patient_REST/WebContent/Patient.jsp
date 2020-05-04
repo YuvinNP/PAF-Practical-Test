@@ -1,13 +1,15 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@page import="com.caremarque.patient.service.PatientServiceImpl" %>
     
 <!DOCTYPE html>
 <html>
 
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1"> -->
+<meta charset="ISO-8859-1">
 
 <title>Patient Service</title>
 
@@ -25,7 +27,8 @@
 
 <div class="container">
 
-<form name="patientSignUp" id="patientSignUp">
+
+<form name="patientSignUp" id="patientSignUp" method = "POST" action = "Patient.jsp">
 
 	<div class="form-title">Create Your Account</div>
 	<br><br>
@@ -42,7 +45,6 @@
 				<input type="text" placeholder="Enter Last Name" name="lName" id="lName" class="form-control form-control-sm"><br/>
 		</div>
 	</div>
-	
 	
 	<div class = "row">	
 		<div class = "col">
@@ -117,7 +119,7 @@
 	
 	
 	<input id = "btnSave" name="btnSave" type = "button" value="Sign Up" class = "btn btn-primary">
-	<input type = "hidden" id = "hidePatientIdSave" name = "hidePatientIdSave" value = "">
+	<input type = "hidden" id = "hidPatientIdSave" name = "hidPatientIdSave" value = "">
 	
 	<br><br>
 	

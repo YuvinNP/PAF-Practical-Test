@@ -1,41 +1,41 @@
 //Page refresh moment
 $(document).ready(function(){
-	if($("alertSuccess").text().trim() == "")
-	{
+	if($("#alertSuccess").text().trim() == ""){
+		
 		$("#alertSuccess").hide();
 	}
 	$("#alertError").hide();
 });
 
 //Save
-$(document).on("click", "#btnSave", function(event)
-{
+$(document).on("click", "#btnSave", function(event){
+	
 	//Clear alerts
-	$("alertSuccess").text("");
-	$("alertSuccess").hide();
-	$("alertError").text("");
-	$("alertError").hide();
+	$("#alertSuccess").text("");
+	$("#alertSuccess").hide();
+	$("#alertError").text("");
+	$("#alertError").hide();
 	
 	//Form validation
 	var status = validateForm();
-	if(status != true)
-	{
+	if(status != true){
+		
 		$("#alertError").text(status);
 		$("#alertError").show();
 		return;
 	}
 	
 	//If valid
-	var type = ($("hidePatientIdSave").val() == "") ? "POST" : "PUT";
+	var type = ($("#hidPatientIdSave").val() == "") ? "POST" : "PUT";
 	
-	$.ajax(
-	{
+	$.ajax({
+		
 		url : "PatientAPI",
 		type : type,
-		data : $("patientSignUp").serialize(),
+		data : $("#patientSignUp").serialize(),
 		dataType : "text",
-		complete : function(response, status)
-		{
+		complete : function(response, status){
+			
 			onPatientRegisterComplete(response.responseText, status);
 		}
 	});
@@ -48,17 +48,19 @@ function onPatientRegisterComplete(response, status){
 		
 		var resultSet = JSON.parse(response);
 		
-		
 		if(resultSet.status.trim() == "success"){
-			$("#alertSuccess").text("Successfully registered to the system..!");
+			
+			$("#alertSuccess").text("Successfully saved..!");
 			$("#alertSuccess").show();
 			
-			$("divPatientsGrid").html(resultSet.data);
-		
+			$("#divPatientsGrid").html(resultSet.data);	
+			
 		}else if(resultSet.status.trim() == "error"){
+			
 			$("#alertError").text(resultSet.data);
 			$("#alertError").show(); 
 		}
+		
 	}else if(status == "error"){
 		$("#alertError").text("Error while saving.");
 		$("#alertError").show(); 
@@ -68,7 +70,7 @@ function onPatientRegisterComplete(response, status){
 		$("#alertError").show(); 
 	}
 	
-	$("#hidePatientIdSave").val("");
+	$("#hidPatientIdSave").val("");
 	$("#patientSignUp")[0].reset(); 
 	
 }	
@@ -76,7 +78,7 @@ function onPatientRegisterComplete(response, status){
 //Update
 $(document).on("click", ".btnUpdate", function(event)
 {
-	$("hidePatientIdSave").val($(this).closest("tr").find('hidePatientIdUpdate').val());
+	$("#hidPatientIdSave").val($(this).closest("tr").find('#hidPatientIdUpdate').val());
 	$("#fName").val($(this).closest("tr").find('td:eq(1)').text());
 	$("#lName").val($(this).closest("tr").find('td:eq(2)').text());
 	$("#gender").val($(this).closest("tr").find('td:eq(3)').text());
@@ -91,16 +93,15 @@ $(document).on("click", ".btnUpdate", function(event)
 });
 
 //Delete
-$(document).on("click", ".btnRemove", function(event)
-		{
-		 $.ajax(
-		 {
-		 url : "PatientAPI",
-		 type : "DELETE",
-		 data : "patientId=" + $(this).data("patientid"),
-		 dataType : "text",
-		 complete : function(response, status)
-		 {
+$(document).on("click", ".btnRemove", function(event){
+		
+	$.ajax({
+		url : "PatientAPI",
+		type : "DELETE",
+		data : "patientId=" + $(this).data("patientid"),
+		dataType : "text",
+		complete : function(response, status){
+			 
 			 onPatientDeleteComplete(response.responseText, status);
 		 }
 	});
@@ -114,7 +115,7 @@ function onPatientDeleteComplete(response, status){
 		
 		if (resultSet.status.trim() == "success"){
 			
-			 $("#alertSuccess").text("Successfully deleted.");
+			 $("#alertSuccess").text("Successfully deleted..!");
 			 $("#alertSuccess").show();
 			 
 			 $("#divPatientsGrid").html(resultSet.data);
@@ -126,11 +127,11 @@ function onPatientDeleteComplete(response, status){
 		
 	 } else if (status == "error")
 	 {
-		 $("#alertError").text("Error while deleting.");
+		 $("#alertError").text("Error while deleting..!");
 		 $("#alertError").show();
 	 } else
 	 {
-		 $("#alertError").text("Unknown error while deleting..");
+		 $("#alertError").text("Unknown error while deleting..!");
 		 $("#alertError").show();
 	 } 
 }
