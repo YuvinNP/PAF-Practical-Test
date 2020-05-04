@@ -91,18 +91,14 @@ public class PaymentAPI extends HttpServlet {
 	 */
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PaymentServiceImpl paymentServiceImpl = new PaymentServiceImpl();
-		
+		System.out.println(request.toString());
 		Map paras = getParasMap(request);
-		System.out.println("paymeint id: " + paras.get("hidPaymentIDSave").toString());
-		System.out.println("paymeint id: " + paras.get("telephone").toString());
-		System.out.println("paymeint id: " + paras.get("email").toString());
+		System.out.println("paymeint id: " + paras.get("hidPaymentIDSave2").toString());
+		System.out.println("paymeint id: " + paras.get("telephone2").toString());
+		System.out.println("paymeint id: " + paras.get("email2").toString());
 
-
-		//		System.out.println(request.getParameter("hidPaymentIDSave"));
-//		System.out.println(request.getParameter("telephone"));
-//		System.out.println(request.getParameter("email"));
-		String output = paymentServiceImpl.updatePayment(paras.get("hidPaymentIDSave").toString(),
-				paras.get("telephone").toString(), paras.get("email").toString());
+		String output = paymentServiceImpl.updatePayment(paras.get("hidPaymentIDSave2").toString(),
+				paras.get("telephone2").toString(), paras.get("email2").toString());
 //		
 		response.getWriter().write(output);
 	}
@@ -117,6 +113,7 @@ public class PaymentAPI extends HttpServlet {
 		
 		String output = paymentServiceImpl.cancelPayment(paras.get("paymentID").toString());
 		System.out.println(paras.get("paymentID").toString());
+		response.getWriter().write(output);
 		
 		
 	}

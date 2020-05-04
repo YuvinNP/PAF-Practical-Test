@@ -21,10 +21,17 @@
 	<div class="Container" style="padding: 30px;">
 		<div class="row">
 			<div class="col-6">
-				<div class="Container cancel-title"
-					style="padding: 10px; background-color: #008AD9; font-weight: bold;">
-					<label style="color: white">CREATE PAYMENTS</label>
+				<div class="form-row">
+					<div id="insertArea" class="Container cancel-title col-6"
+						style="padding: 10px; background-color: #008AD9; font-weight: bold;">
+						<label style="color: white">CREATE PAYMENTS</label>
+					</div>
+					<div id="updateArea" class="Container cancel-title col-6"
+						style="padding: 10px; background-color: #008AD9; font-weight: bold;">
+						<label style="color: white">UPDATE PAYMENTS</label>
+					</div>
 				</div>
+				<div id="insertForm">
 				<form id="formItem" name="formItem" style="padding: 10px;">
 					<div class="form-row">
 						<div class="form-group col-md-3">
@@ -119,6 +126,24 @@
 						 <input type="hidden" id="hidItemIDSave" name="hidItemIDSave" value="">
 					 </div> -->
 				</form>
+				</div>
+				<div id="formItemClass">
+					<form id="formItem2" name="formItem2" style="padding: 10px;">
+						<div class="form-row">
+						<div class="form-group col-md-6">
+								<label for="inputCity">Email:</label> <input type="text"
+									class="form-control" id="email2" name="email2"
+									placeholder="sampleuser@email.com">
+							</div>
+							<div class="form-group col-md-6">
+								<label for="inputCity">Telephone:</label> <input type="text"
+									class="form-control" id="telephone2" name="telephone2" placeholder="07XXXXXXXX">
+							</div>
+						</div>
+						<input type="button"  id="btnSave2" name="btnSave2" value="Save" class="btn btn-success">
+					 	<input type="hidden" id="hidPaymentIDSave2" name="hidPaymentIDSave2" value="">
+					</form>
+				</div>
 				<div id="alertSuccess" class="alert alert-success" style="font-weight: bold"></div>
 				<div id="alertError" class="alert alert-danger" style="font-weight: bold"></div>
 
@@ -129,7 +154,7 @@
 					style="padding: 10px; background-color: #008AD9; font-weight: bold;">
 					<label style="color: white;"> CANCELED PAYMENTS</label>
 				</div>
-				<div class="Container" style="padding: 10px;">
+				<div id="divCanceledPaymentsGrid" class="Container" style="padding: 10px;">
 					<%
 						out.print(paymentServiceImpl.getCanceledPayments());
 					%>

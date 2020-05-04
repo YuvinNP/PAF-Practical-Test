@@ -4,6 +4,18 @@ $(document).ready(function() {
 		$("#alertSuccess").hide();
 	}
 	$("#alertError").hide();
+	$("#formItemClass").hide();
+});
+
+$(document).on("click", "#updateArea", function(event) {
+	$("#insertForm").hide();
+	$("#formItemClass").show();
+	$("#alertSuccess").hide();
+});
+
+$(document).on("click", "#insertArea", function(event) {
+	$("#formItemClass").hide();
+	$("#insertForm").show();
 });
 
 $(document).on("click", "#btnSave", function(event) {
@@ -19,11 +31,11 @@ $(document).on("click", "#btnSave", function(event) {
 		return;
 	}
 	//If valid
-	var type = ($("#hidPaymentIDSave").val() == "") ? "POST" : "PUT";
+	//var type = ($("#hidPaymentIDSave").val() == "") ? "POST" : "PUT";
 
 	$.ajax({
 		url : "PaymentAPI",
-		type : type,
+		type : "POST",
 		data : $("#formItem").serialize(),
 		dataType : "text",
 		complete : function(response, status) {
@@ -35,16 +47,37 @@ $(document).on("click", "#btnSave", function(event) {
 	});
 });
 
+$(document).on("click", "#btnSave2", function(event) {
+	$("#alertSuccess").text("");
+	$("#alertSuccess").hide();
+	$("#alertError").text("");
+	$("#alertError").hide();
+
+	$.ajax({
+		url : "PaymentAPI",
+		type : "PUT",
+		data : $("#formItem2").serialize(),
+		dataType : "text",
+		complete : function(response, status) {
+			$("#alertSuccess").text(status);
+			$("#alertSuccess").show();
+			onPaymentSaveComplete(response.responseText, status);
+		}
+
+	});
+});
+
+
 $(document).on("click", ".btnUpdate", function(event)
 {	
-	$("#hidPaymentIDSave").val($(this).closest("tr").find('#hidPaymentIdUpdate').val());
-	$("#patientId").val($(this).closest("tr").find('td:eq(1)').text());
-	$("#appointmentId").val($(this).closest("tr").find('td:eq(3)').text());
-	$("#doctorId").val($(this).closest("tr").find('td:eq(4)').text());
-	$("#hospitalId").val($(this).closest("tr").find('td:eq(5)').text());
-	$("#patientName").val($(this).closest("tr").find('td:eq(2)').text());
-	$("#email").val($(this).closest("tr").find('td:eq(12)').text());
-	$("#telephone").val($(this).closest("tr").find('td:eq(11)').text());
+	$("#hidPaymentIDSave2").val($(this).closest("tr").find('#hidPaymentIdUpdate').val());
+//	$("#patientId").val($(this).closest("tr").find('td:eq(1)').text());
+//	$("#appointmentId").val($(this).closest("tr").find('td:eq(3)').text());
+//	$("#doctorId").val($(this).closest("tr").find('td:eq(4)').text());
+//	$("#hospitalId").val($(this).closest("tr").find('td:eq(5)').text());
+//	$("#patientName").val($(this).closest("tr").find('td:eq(2)').text());
+	$("#email2").val($(this).closest("tr").find('td:eq(12)').text());
+	$("#telephone2").val($(this).closest("tr").find('td:eq(11)').text());
 	
 
 })
@@ -123,7 +156,7 @@ function onPaymentDeleteComplete(response, status) {
 		if (resultSet.status.trim() == "success") { 
 			$("#alertSuccess").text("Successfully deleted."); 
 			$("#alertSuccess").show(); 
-			$("#divItemsGrid").html(resultSet.data); 
+			$("#divPaymentsGrid").html(resultSet.data); 
 		} else if (resultSet.status.trim() == "error") { 
 			$("#alertError").text(resultSet.data); 
 			$("#alertError").show(); 
