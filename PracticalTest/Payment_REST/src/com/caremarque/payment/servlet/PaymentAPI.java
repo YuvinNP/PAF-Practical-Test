@@ -115,7 +115,10 @@ public class PaymentAPI extends HttpServlet {
 		
 		Map paras = getParasMap(request);
 		
-		String output = paymentServiceImpl.cancelPayment(paras.get("paymentId").toString());
+		String output = paymentServiceImpl.cancelPayment(paras.get("paymentID").toString());
+		System.out.println(paras.get("paymentID").toString());
+		
+		
 	}
 
 }

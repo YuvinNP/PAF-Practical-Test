@@ -231,15 +231,24 @@ public class PaymentServiceImpl implements IPaymentService {
 
 			DateFormat inputFormatter = new SimpleDateFormat("dd/MM/yyyy");
 
-			output = "<table class=\" table table-sm table-responsive\" style=\"font-family: 'Roboto', sans-serif\" > "
-					+ "<tr>" + "<th scope=\"col\">Payment Id</th> " + "<th scope=\"col\">Patient Id</th> "
-					+ "<th scope=\"col\">Patient Name</th> " + "<th scope=\"col\">Appointment Id</th> "
-					+ "<th scope=\"col\">Doctor Id</th> " + "<th scope=\"col\">Hospital Id</th> "
-					+ "<th scope=\"col\">Paymen tDate</th> " + "<th scope=\"col\">Payment Time</th> "
-					+ "<th scope=\"col\">Doctor Charges</th> " + "<th scope=\"col\">Hospital Charges</th> "
-					+ "<th scope=\"col\">Total Amount</th> " + "<th scope=\"col\">Telephone No</th> "
-					+ "<th scope=\"col\">Email</th> " + "<th scope=\"col\">Payment Status</th>"
-					+ "<th scope=\"col\">Update</th>" + "<th scope=\"col\">Delete</th>" + "</tr>";
+//			output = "<table class=\" table table-sm table-responsive\" style=\"font-family: 'Roboto', sans-serif;\" > "
+//					+ "<tr>" + "<th scope=\"col\">Payment Id</th> " + "<th scope=\"col\">Patient Id</th> "
+//					+ "<th scope=\"col\">Patient Name</th> " + "<th scope=\"col\">Appointment Id</th> "
+//					+ "<th scope=\"col\">Doctor Id</th> " + "<th scope=\"col\">Hospital Id</th> "
+//					+ "<th scope=\"col\">Paymen tDate</th> " + "<th scope=\"col\">Payment Time</th> "
+//					+ "<th scope=\"col\">Doctor Charges</th> " + "<th scope=\"col\">Hospital Charges</th> "
+//					+ "<th scope=\"col\">Total Amount</th> " + "<th scope=\"col\">Telephone No</th> "
+//					+ "<th scope=\"col\">Email</th> " + "<th scope=\"col\">Payment Status</th>"
+//					+ "<th scope=\"col\">Update</th>" + "<th scope=\"col\">Delete</th>" + "</tr>";
+			output = "<table class=' table table-sm table-responsive' style='font-family: 'Roboto', sans-serif;' > "
+					+ "<tr>" + "<th scope='col'>Payment Id</th> " + "<th scope='col'>Patient Id</th> "
+					+ "<th scope='col'>Patient Name</th> " + "<th scope='col'>Appointment Id</th> "
+					+ "<th scope='col'>Doctor Id</th> " + "<th scope='col'>Hospital Id</th> "
+					+ "<th scope='col'>Paymen tDate</th> " + "<th scope='col'>Payment Time</th> "
+					+ "<th scope='col'>Doctor Charges</th> " + "<th scope='col'>Hospital Charges</th> "
+					+ "<th scope='col'>Total Amount</th> " + "<th scope='col'>Telephone No</th> "
+					+ "<th scope='col'>Email</th> " + "<th scope='col'>Payment Status</th>"
+					+ "<th scope='col'>Update</th>" + "<th scope='col'>Delete</th>" + "</tr>";
 
 			while (resultset.next()) {
 				Payment payment = new Payment();
@@ -259,7 +268,7 @@ public class PaymentServiceImpl implements IPaymentService {
 				payment.setPaymentStatus(resultset.getString(Constants.COLUMN_INDEX_FOURTEEN));
 				arrayList.add(payment);
 
-				output += "<tr><td style=\"color:#008AD9;font-weight: bold;\">"
+				output += "<tr><td style='color:#008AD9;font-weight: bold;'>"
 						+ "<input id='hidPaymentIdUpdate' name = 'hidPaymentIdUpdate' type='hidden' value='" +resultset.getString(Constants.COLUMN_INDEX_ONE)+"'>"
 						+ resultset.getString(Constants.COLUMN_INDEX_ONE) + "</td>";
 				output += "<td>" + resultset.getString(Constants.COLUMN_INDEX_TWO) + "</td>";
@@ -287,10 +296,10 @@ public class PaymentServiceImpl implements IPaymentService {
 //						+ "</td>"
 //						+ "</tr>";
 				output += "<td>"
-						+ "<input name='btnUpdate' type='button' value='Update' class='btnUpdate btn btn-secondary' style= \"font-size: 14px;\">"
+						+ "<input name='btnUpdate' type='button' value='Update' class='btnUpdate btn btn-secondary' style= 'font-size: 14px;'>"
 						+ "</td>"
 						+ "<td>"
-						+ "<input name='btnRemove' type='button' value='Remove' class='btnRemove btn btn-danger' style= \"font-size: 14px;\" data-paymentid='"
+						+ "<input name='btnRemove' type='button' value='Remove' class='btnRemove btn btn-danger' style= 'font-size: 14px;' data-paymentid='"
 						+ resultset.getString(Constants.COLUMN_INDEX_ONE) + "'>" 
 						+ "</td>"
 						+ "</tr>";
