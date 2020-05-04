@@ -7,3 +7,7 @@ body{
 	background-color: #D3D3D3;
 	font-style: bold;
 } */
+
+.insertTab:hover {
+	background-color: #1E90FF;
+}

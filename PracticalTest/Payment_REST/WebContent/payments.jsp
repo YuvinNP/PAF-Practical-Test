@@ -22,11 +22,11 @@
 		<div class="row">
 			<div class="col-6">
 				<div class="form-row">
-					<div id="insertArea" class="Container cancel-title col-6"
+					<div id="insertArea" class="Container col-6 insertTab"
 						style="padding: 10px; background-color: #008AD9; font-weight: bold;">
 						<label style="color: white">CREATE PAYMENTS</label>
 					</div>
-					<div id="updateArea" class="Container cancel-title col-6"
+					<div id="updateArea" class="Container col-6 updateTab"
 						style="padding: 10px; background-color: #008AD9; font-weight: bold;">
 						<label style="color: white">UPDATE PAYMENTS</label>
 					</div>
