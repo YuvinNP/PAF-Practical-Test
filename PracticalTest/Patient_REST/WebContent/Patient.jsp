@@ -6,9 +6,7 @@
 <html>
 
 <head>
-<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1"> -->
+
 <meta charset="ISO-8859-1">
 
 <title>Patient Service</title>
@@ -51,8 +49,8 @@
 			<label>Gender<label_1> *</label_1></label><br/>
 				<select name="gender" id="gender" class="form-control form-control-sm">
 					<option value="0">Select Gender</option>
-					<option value="M">Male</option>
-					<option value="F">Female</option>
+					<option value="Male">Male</option>
+					<option value="Female">Female</option>
 				</select><br/>	
 		</div>
 		

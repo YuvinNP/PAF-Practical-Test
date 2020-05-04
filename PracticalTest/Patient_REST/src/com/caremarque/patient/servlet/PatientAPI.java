@@ -66,8 +66,9 @@ public class PatientAPI extends HttpServlet {
 		
 		Patient patient = new Patient();
 		
-		patient.setFirstName(request.getParameter("firstName"));
-		patient.setLastName(request.getParameter("lastName"));
+		patient.setFirstName(request.getParameter("fName"));
+		System.out.println("First Name API : " + request.getParameter("fName"));
+		patient.setLastName(request.getParameter("lName"));
 		patient.setGender(request.getParameter("gender"));
 		patient.setNIC(request.getParameter("NIC"));
 		patient.setDOB(request.getParameter("DOB"));
@@ -89,12 +90,12 @@ public class PatientAPI extends HttpServlet {
 		
 		System.out.println("Patient API put method");
 		System.out.println("patient id: " + paras.get("hidPatientIdSave").toString());
-		System.out.println("paymeint name: " + paras.get("firstName").toString());
+		System.out.println("patient name: " + paras.get("fName").toString());
 		
 		String output = patientServiceImpl.updatePatientDetails(
 				paras.get("hidPatientIdSave").toString(),
-				paras.get("firstName").toString(),
-				paras.get("lastName").toString(),
+				paras.get("fName").toString(),
+				paras.get("lName").toString(),
 				paras.get("gender").toString(),
 				paras.get("NIC").toString(),
 				paras.get("DOB").toString(),

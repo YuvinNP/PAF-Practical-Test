@@ -53,6 +53,7 @@ public class PatientServiceImpl implements IPatientService {
 				patient.setPatientId(patientId);
 				preparedStmt.setString(Constants.COLUMN_INDEX_ONE, patient.getPatientId());
 				preparedStmt.setString(Constants.COLUMN_INDEX_TWO, patient.getFirstName());
+				System.out.println("Patient Name:" + patient.getFirstName());
 				preparedStmt.setString(Constants.COLUMN_INDEX_THREE, patient.getLastName());
 				preparedStmt.setString(Constants.COLUMN_INDEX_FOUR, patient.getGender());
 				preparedStmt.setString(Constants.COLUMN_INDEX_FIVE, patient.getNIC());
