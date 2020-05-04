@@ -1,7 +1,6 @@
 //Page refresh moment
 $(document).ready(function(){
-	if($("#alertSuccess").text().trim() == ""){
-		
+	if($("#alertSuccess").text().trim() == ""){		
 		$("#alertSuccess").hide();
 	}
 	$("#alertError").hide();
@@ -76,8 +75,8 @@ function onPatientRegisterComplete(response, status){
 }	
 
 //Update
-$(document).on("click", ".btnUpdate", function(event)
-{
+$(document).on("click", ".btnUpdate", function(event){
+	
 	$("#hidPatientIdSave").val($(this).closest("tr").find('#hidPatientIdUpdate').val());
 	$("#fName").val($(this).closest("tr").find('td:eq(1)').text());
 	$("#lName").val($(this).closest("tr").find('td:eq(2)').text());
@@ -143,32 +142,81 @@ function validateForm(){
 		return "Insert First Name...!";
 	}
 	
+	var letterReg1 = /^[A-Za-z]+$/;
+	var tmpfName =  $("#fName").val().trim();
+	if(!tmpfName.match(letterReg1)){
+		return "First Name must have alphabet charaters only...!";
+	}
+	
 	if($("#lName").val().trim() == ""){
 		return "Insert Last Name...!";
 	}
+	
+	var letterReg2 = /^[A-Za-z]+$/;
+	var tmplName =  $("#lName").val().trim();
+	if(!tmplName.match(letterReg2)){
+		return "Last Name must have alphabet charaters only...!";
+	}
+	
 	if($("#gender").val() == "0"){
 		return "Select Gender...!";
 	}
+	
 	if($("#NIC").val().trim() == ""){
 		return "Insert NIC...!";
 	}
+	
+	var nicReg = /^[0-9]{9}[vVxX]$/;
+	var tmpNIC =  $("#NIC").val().trim();
+	if(!tmpNIC.match(nicReg)){
+		return "Insert a valid NIC number...!";
+	}
+		
 	if($("#DOB").val().trim() == ""){
 		return "Insert Date Of Birth...!";
 	}
+	
 	if($("#bloodGroup").val() == "0"){
 		return "Select Blood Group...!";
 	}
+	
 	if($("#email").val().trim() == ""){
 		return "Insert Email...!";
 	}
+	
+	var emailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+	var tmpEmail =  $("#email").val().trim();
+	if(!tmpEmail.match(emailReg)){
+		return "Insert a valid Email...!";
+	}
+	
 	if($("#phone").val().trim() == ""){
 		return "Insert Phone Number...!";
 	}
+	
+	var contactReg = /^\d{10}$/;
+	var tmpPhone =  $("#phone").val().trim();
+	if(!tmpPhone.match(contactReg)){
+		return "Insert a valid Phone Number...!";
+	}
+	
 	if($("#password").val().trim() == ""){
 		return "Insert Password...!";
 	}
+	
+	var pwdReg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$/;
+	var tmpPwd =  $("#password").val().trim();
+	if(!tmpPwd.match(pwdReg)){
+		return "Insert a Password 4 to 8 characters which contain at least one numeric digit, one uppercase and one lowercase letter...!";
+	}
+	
 	if($("#cPassword").val().trim() == ""){
 		return "Insert Confirm Password...!";
+	}
+	
+	var tmpCpwd = $("#cPassword").val().trim();
+	if(tmpCpwd != tmpPwd){
+		return "Passwords are mismatching...!";
 	}
 	
 	return true;

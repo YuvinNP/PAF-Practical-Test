@@ -49,7 +49,7 @@ public class PatientServiceImpl implements IPatientService {
 
 			preparedStmt = con.prepareStatement(query);
 
-
+				System.out.println("Patient Id" + patientId);
 				patient.setPatientId(patientId);
 				preparedStmt.setString(Constants.COLUMN_INDEX_ONE, patient.getPatientId());
 				preparedStmt.setString(Constants.COLUMN_INDEX_TWO, patient.getFirstName());

@@ -89,8 +89,9 @@ public class PatientAPI extends HttpServlet {
 		Map paras = getParasMap(request);
 		
 		System.out.println("Patient API put method");
-		System.out.println("patient id: " + paras.get("hidPatientIdSave").toString());
-		System.out.println("patient name: " + paras.get("fName").toString());
+		System.out.println("patient id API : " + paras.get("hidPatientIdSave").toString());
+		System.out.println("patient name API : " + paras.get("fName").toString());
+		System.out.println("Patient email API : " + paras.get("email").toString());
 		
 		String output = patientServiceImpl.updatePatientDetails(
 				paras.get("hidPatientIdSave").toString(),
