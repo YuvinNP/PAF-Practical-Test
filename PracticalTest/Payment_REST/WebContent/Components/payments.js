@@ -132,6 +132,8 @@ function onPaymentSaveComplete(response, status) {
 			$("#divPaymentsGrid").html(resultSet.data);
 			$("#hidPaymentIDSave").val("");
 			$("#formItem")[0].reset();
+			$("#hidPaymentIDSave2").val("");
+			$("#formItem2")[0].reset();
 		} else if (resultSet.status.trim() == "error") {
 			$("#alertError").text(resultSet.data);
 			$("#alertError").show();
