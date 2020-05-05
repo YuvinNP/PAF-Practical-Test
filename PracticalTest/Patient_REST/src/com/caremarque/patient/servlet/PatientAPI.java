@@ -101,7 +101,7 @@ public class PatientAPI extends HttpServlet {
 				paras.get("NIC").toString(),
 				paras.get("DOB").toString(),
 				paras.get("bloodGroup").toString(),
-				paras.get("email").toString(),
+				paras.get("email").toString().replace("%40", "@"),
 				paras.get("phone").toString(),				
 				paras.get("password").toString());
 
