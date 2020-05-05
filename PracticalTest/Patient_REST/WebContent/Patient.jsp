@@ -118,15 +118,12 @@
 	<input id = "btnSave" name="btnSave" type = "button" value="Sign Up" class = "btn btn-primary">
 	<input type = "hidden" id = "hidPatientIdSave" name = "hidPatientIdSave" value = "">
 	
-	<br><br>
-	
-	<div id = "alertSuccess" class = "alert alert-success"></div>
-	<div id = "alertError" class = "alert alert-danger"></div>
-	
+	<br>
 			
 </form>
 
-
+	<div id = "alertSuccess" class = "alert alert-success"></div>
+	<div id = "alertError" class = "alert alert-danger"></div>
 
 <div id="divPatientsGrid">
  <%
